@@ -178,6 +178,26 @@
     .foot{max-width:1120px;margin:auto;display:flex;justify-content:space-between;gap:20px;align-items:center}
     .toast{position:fixed;right:20px;bottom:20px;background:#171322;color:#fff;padding:14px 18px;border-radius:14px;box-shadow:var(--shadow);display:none;z-index:20;font-size:13px}
     
+    /* MODAL QRIS STYLES */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px;
+    }
+    .modal-box {
+      background: white; border-radius: 24px; max-width: 420px; width: 100%; padding: 24px;
+      text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: scaleUp 0.25s ease;
+    }
+    @keyframes scaleUp { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .modal-box h3 { font-size: 20px; margin-bottom: 6px; color: var(--dark); }
+    .modal-box p { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .qris-img { width: 100%; max-height: 280px; object-fit: contain; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 16px; background: #faf5fa; }
+    .upload-box {
+      border: 2px dashed #ff82bb; border-radius: 12px; padding: 12px; background: #fff5fb;
+      margin-bottom: 16px; cursor: pointer; font-size: 13px; color: var(--pink); font-weight: 700;
+    }
+    .upload-box input { display: none; }
+    .preview-filename { font-size: 12px; color: var(--muted); margin-top: 4px; word-break: break-all; }
+
     @media(max-width:800px){
       .hero-box{grid-template-columns:1fr;padding:30px 20px}
       .layout{grid-template-columns:1fr}
@@ -268,11 +288,11 @@
             <div class="field">
               <label for="payment">4. Metode Pembayaran</label>
               <select id="payment" onchange="updateSummary()">
-                <option>QRIS</option>
-                <option>DANA</option>
-                <option>GoPay</option>
-                <option>OVO</option>
-                <option>Transfer Bank</option>
+                <option value="QRIS">QRIS (Scan & Otomatis Bukti)</option>
+                <option value="DANA">DANA</option>
+                <option value="GoPay">GoPay</option>
+                <option value="OVO">OVO</option>
+                <option value="Transfer Bank">Transfer Bank</option>
               </select>
             </div>
           </div>
@@ -299,6 +319,26 @@
     </div>
   </main>
 
+  <!-- MODAL POPUP QRIS -->
+  <div class="modal-overlay" id="qrisModal">
+    <div class="modal-box">
+      <h3>Scan QRIS Jessica Store</h3>
+      <p>Scan barcode di bawah ini menggunakan m-Banking/E-Wallet apa saja.</p>
+      
+      <!-- Gambar QRIS yang Anda berikan -->
+      <img src="https://i.gyazo.com/bd73e43c5a5f808f58eee5ca1e173056.jpg" alt="QRIS All Payment" class="qris-img">
+
+      <label class="upload-box" for="proofFile">
+        📁 Unggah Bukti Transfer / Screenshot
+        <input type="file" id="proofFile" accept="image/*" onchange="handleFileSelect(event)">
+        <div class="preview-filename" id="fileLabel">Belum ada file dipilih</div>
+      </label>
+
+      <button type="button" class="btn" style="margin-top:0;" onclick="confirmQrisCheckout()">Kirim Pesanan ke WhatsApp 🚀</button>
+      <button type="button" style="background:none;border:none;color:var(--muted);font-size:13px;margin-top:12px;cursor:pointer;" onclick="closeQrisModal()">Batal</button>
+    </div>
+  </div>
+
   <footer>
     <div class="foot">
       <div><strong>JECIMARKET</strong><br><small>Top Up Game & Rental FF</small></div>
@@ -309,7 +349,7 @@
   <div class="toast" id="toast">Silakan isi data dengan lengkap.</div>
 
   <script>
-    const ADMIN_WA = "6282260397943";
+    const ADMIN_WA_NUMBER = "6282260397943";
 
     const catalog = {
       "Mobile Legends": [
@@ -385,6 +425,7 @@
     let selectedGame = "";
     let selectedAcc = "";
     let selectedItem = { diamond: "", price: 0 };
+    let uploadedFileObj = null;
 
     function rupiah(n) {
       return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(n);
@@ -531,9 +572,6 @@
 
     document.getElementById("checkout").addEventListener("click", () => {
       const useridEl = document.getElementById("userid");
-      const serverEl = document.getElementById("server");
-      const paymentEl = document.getElementById("payment");
-
       if (!selectedGame || !useridEl || !useridEl.value.trim()) {
         const toast = document.getElementById("toast");
         toast.textContent = selectedGame === "Rental Free Fire" ? "Silakan isi nomor WhatsApp terlebih dahulu." : "Silakan isi User ID terlebih dahulu.";
@@ -543,24 +581,58 @@
         return;
       }
 
+      const paymentEl = document.getElementById("payment");
+      if (paymentEl.value === "QRIS") {
+        // Tampilkan modal QRIS
+        document.getElementById("qrisModal").style.display = "flex";
+      } else {
+        // Langsung ke WhatsApp untuk metode pembayaran lain
+        executeWhatsAppRedirect();
+      }
+    });
+
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (file) {
+        uploadedFileObj = file;
+        document.getElementById("fileLabel").textContent = "File terpilih: " + file.name;
+      }
+    }
+
+    function closeQrisModal() {
+      document.getElementById("qrisModal").style.display = "none";
+    }
+
+    function confirmQrisCheckout() {
+      closeQrisModal();
+      executeWhatsAppRedirect(true);
+    }
+
+    function executeWhatsAppRedirect(isQrisWithProof = false) {
+      const useridEl = document.getElementById("userid");
+      const serverEl = document.getElementById("server");
+      const paymentEl = document.getElementById("payment");
+
       const accText = selectedGame === "Rental Free Fire" ? `\n👤 Pilihan Akun: ${selectedAcc}` : "";
       const userLabelText = selectedGame === "Rental Free Fire" ? "No. WhatsApp Penyewa" : "User ID";
+      const proofNote = isQrisWithProof ? (uploadedFileObj ? "\n📎 [Bukti Transfer QRIS Telah Dilampirkan/Disiapkan]" : "\n📎 [Pembayaran via QRIS]") : "";
 
       const textMessage = 
 `Halo Admin JECIMARKET 👋
 
-Saya ingin melakukan pesanan:
+Berikut ringkasan pesanan saya:
 🎮 Layanan: ${selectedGame}${accText}
 🆔 ${userLabelText}: ${useridEl.value.trim()}
 🌐 Zone/Server: ${serverEl ? (serverEl.value.trim() || "-") : "-"}
 📦 Paket/Nominal: ${selectedItem.diamond}
 💳 Pembayaran: ${paymentEl.value}
-💰 Total: ${rupiah(selectedItem.price)}
+💰 Total: ${rupiah(selectedItem.price)}${proofNote}
 
 Mohon diproses ya kak. Terima kasih 🙏`;
 
-      window.open(`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(textMessage)}`, "_blank");
-    });
+      const whatsappUrl = `https://wa.me/${ADMIN_WA_NUMBER}?text=${encodeURIComponent(textMessage)}`;
+      window.open(whatsappUrl, "_blank");
+    }
   </script>
 </body>
 </html>
