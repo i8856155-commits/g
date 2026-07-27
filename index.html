@@ -3,31 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JECIMARKET — Top Up Diamond</title>
-  <meta name="description" content="Top up diamond game cepat, aman, dan praktis di JECIMARKET.">
+  <title>JECIMARKET — Top Up & Rental Game</title>
+  <meta name="description" content="Top up diamond dan rental akun game cepat, aman, dan praktis di JECIMARKET.">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     :root{
       --pink:#ff4f9a;--pink2:#ff82bb;--purple:#8b5cf6;
-      --dark:#171322;--muted:#777184;--card:#fff;--bg:#fff7fb;
-      --line:#eee5ef;--shadow:0 18px 50px rgba(110,45,90,.12)
+      --dark:#110e1b;--muted:#777184;--card:#fff;--bg:#fff7fb;
+      --line:#eee5ef;--shadow:0 18px 50px rgba(110,45,90,.12);
+
+      --banner-ml: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%231a0b2e"/><stop offset="100%" stop-color="%234c1d95"/></linearGradient><radialGradient id="glow" cx="50%" cy="40%" r="50%"><stop offset="0%" stop-color="%2338bdf8" stop-opacity="0.8"/><stop offset="100%" stop-color="%231a0b2e" stop-opacity="0"/></radialGradient></defs><rect width="300" height="300" fill="url(%23bg)"/><circle cx="150" cy="120" r="100" fill="url(%23glow)"/><polygon points="150,40 180,110 250,110 195,150 215,220 150,175 85,220 105,150 50,110 120,110" fill="none" stroke="%2338bdf8" stroke-width="3" opacity="0.4"/><path d="M150 60 L180 130 L150 210 L120 130 Z" fill="%23f43f5e"/><path d="M150 40 L195 130 L150 240 L105 130 Z" fill="none" stroke="%23fbbf24" stroke-width="4"/><circle cx="150" cy="130" r="18" fill="%23fef08a"/><text x="150" y="270" font-family="Arial, sans-serif" font-weight="900" font-size="20" fill="%23ffffff" text-anchor="middle" letter-spacing="2">MOBILE LEGENDS</text></svg>');
+      --banner-ff: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><linearGradient id="bgff" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%232a080c"/><stop offset="100%" stop-color="%237f1d1d"/></linearGradient><radialGradient id="fire" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23f97316" stop-opacity="0.9"/><stop offset="100%" stop-color="%237f1d1d" stop-opacity="0"/></radialGradient></defs><rect width="300" height="300" fill="url(%23bgff)"/><circle cx="150" cy="130" r="110" fill="url(%23fire)"/><path d="M150 40 Q180 90 170 130 Q210 110 190 170 Q220 160 200 210 Q160 250 150 250 Q120 250 100 210 Q80 160 110 170 Q90 110 130 130 Q120 90 150 40 Z" fill="%23f97316"/><path d="M150 80 Q165 115 160 145 Q185 130 170 175 Q140 220 150 220 Q125 220 115 185 Q130 145 150 80 Z" fill="%23fef08a"/><text x="150" y="270" font-family="Arial, sans-serif" font-weight="900" font-size="22" fill="%23ffffff" text-anchor="middle" letter-spacing="2">FREE FIRE</text></svg>');
+      --banner-ff-rental: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><linearGradient id="bgr" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%231e1b4b"/><stop offset="100%" stop-color="%23312e81"/></linearGradient><radialGradient id="keyglow" cx="50%" cy="40%" r="50%"><stop offset="0%" stop-color="%23a855f7" stop-opacity="0.9"/><stop offset="100%" stop-color="%231e1b4b" stop-opacity="0"/></radialGradient></defs><rect width="300" height="300" fill="url(%23bgr)"/><circle cx="150" cy="120" r="100" fill="url(%23keyglow)"/><path d="M150 60 A 30 30 0 0 0 150 120 A 30 30 0 0 0 150 60 Z M150 75 A 15 15 0 0 1 150 105 A 15 15 0 0 1 150 75 Z" fill="%23fbbf24"/><path d="M142 110 L158 110 L158 200 L142 200 Z M158 150 L180 150 L180 168 L158 168 Z M158 178 L175 178 L175 195 L158 195 Z" fill="%23fbbf24"/><text x="150" y="250" font-family="Arial, sans-serif" font-weight="900" font-size="18" fill="%23ffffff" text-anchor="middle" letter-spacing="2">RENTAL FF</text></svg>');
+      --banner-acc1: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><linearGradient id="bgacc1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23831843"/><stop offset="100%" stop-color="%23be185d"/></linearGradient></defs><rect width="300" height="300" fill="url(%23bgacc1)"/><circle cx="150" cy="110" r="60" fill="%23f472b6" opacity="0.3"/><text x="150" y="125" font-family="Arial, sans-serif" font-weight="900" font-size="50" fill="%23ffffff" text-anchor="middle">#1</text><text x="150" y="240" font-family="Arial, sans-serif" font-weight="900" font-size="22" fill="%23ffffff" text-anchor="middle" letter-spacing="1">AKUN 1</text></svg>');
+      --banner-acc2: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><linearGradient id="bgacc2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%231e3a8a"/><stop offset="100%" stop-color="%231d4ed8"/></linearGradient></defs><rect width="300" height="300" fill="url(%23bgacc2)"/><circle cx="150" cy="110" r="60" fill="%2360a5fa" opacity="0.3"/><text x="150" y="125" font-family="Arial, sans-serif" font-weight="900" font-size="50" fill="%23ffffff" text-anchor="middle">#2</text><text x="150" y="240" font-family="Arial, sans-serif" font-weight="900" font-size="22" fill="%23ffffff" text-anchor="middle" letter-spacing="1">AKUN 2</text></svg>');
     }
     body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--dark)}
     a{text-decoration:none;color:inherit}
-    .topbar{background:#171322;color:#fff;text-align:center;padding:9px 16px;font-size:13px}
-    header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10;border-bottom:1px solid #f1e8ef}
-    .nav{max-width:1120px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+
+    header{background:rgba(255,255,255,.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10;border-bottom:1px solid #f1e8ef}
+    .nav{max-width:1120px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
     
-    /* Branding / Logo Area */
     .brand{display:flex;align-items:center;gap:12px}
     .brand img{width:40px;height:40px;border-radius:10px;object-fit:cover}
     .logo{font-weight:900;font-size:22px;letter-spacing:-1px}
     .logo span{color:var(--pink)}
     
-    nav{display:flex;gap:24px;font-size:14px;font-weight:700}
-    nav a:hover{color:var(--pink)}
+    nav{display:flex;align-items:center;gap:10px}
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 99px;
+      background: #f7f0f6;
+      border: 1px solid #ebdbe8;
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+    }
     
-    /* Hero Section with Banner */
     .hero{max-width:1120px;margin:30px auto 0;padding:0 20px}
     .hero-box{
       position:relative;
@@ -51,7 +67,7 @@
       width:100%;
       max-height:240px;
       object-fit:cover;
-      border-radius:16px;
+      border-radius:20px;
       box-shadow:0 10px 25px rgba(0,0,0,0.2);
     }
 
@@ -61,70 +77,48 @@
     .section-title p{color:var(--muted);font-size:14px;margin-top:5px}
     .layout{display:grid;grid-template-columns:1.3fr .7fr;gap:22px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 8px 30px rgba(90,40,80,.06)}
-    label{font-size:13px;font-weight:800;display:block;margin-bottom:12px}
+    label{font-size:14px;font-weight:800;display:block;margin-bottom:12px;color:#332940}
     input,select{width:100%;border:1px solid #ddd3df;border-radius:13px;padding:13px 14px;font-size:14px;outline:none;background:white}
     input:focus,select:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,79,154,.1)}
-    .field{margin-bottom:20px}
+    .field{margin-bottom:24px}
 
-    /* GRID HERO CARDS GAME ALA CODASHOP (DENGAN ANIMASI INTERAKTIF PERBAIKAN) */
-    .game-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+    .game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
     .game-card{
       position:relative;
       border-radius:18px;
       overflow:hidden;
-      background:var(--dark);
+      background-size:cover;
+      background-position:center;
       cursor:pointer;
-      aspect-ratio: 1 / 1;
+      height: 130px;
+      min-height: 130px;
       border:3px solid transparent;
-      box-shadow:0 6px 16px rgba(0,0,0,0.06);
-      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                  border-color 0.3s ease, 
-                  box-shadow 0.35s ease;
-      will-change: transform, box-shadow;
-    }
-    .game-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+      box-shadow:0 6px 16px rgba(0,0,0,0.08);
+      transition: all 0.25s ease;
+      -webkit-tap-highlight-color: transparent;
     }
     
-    /* Dynamic Shimmer Effect on Hover */
-    .game-card::after{
-      content:'';
-      position:absolute;
-      top:-50%;
-      left:-50%;
-      width:200%;
-      height:200%;
-      background:linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent);
-      transform:rotate(45deg) translateY(-100%);
-      transition:transform 0.6s ease;
-      pointer-events:none;
-    }
-    .game-card:hover::after{
-      transform:rotate(45deg) translateY(100%);
-    }
+    .card-ml { background-image: var(--banner-ml); }
+    .card-ff { background-image: var(--banner-ff); }
+    .card-ff-rental { background-image: var(--banner-ff-rental); }
+    .card-acc1 { background-image: var(--banner-acc1); }
+    .card-acc2 { background-image: var(--banner-acc2); }
 
     .game-card-overlay{
       position:absolute;
       inset:0;
-      background:linear-gradient(to top, rgba(23, 19, 34, 0.95) 0%, rgba(23, 19, 34, 0.2) 65%);
+      background:linear-gradient(to top, rgba(23, 19, 34, 0.95) 0%, rgba(23, 19, 34, 0.1) 60%);
       display:flex;
       align-items:flex-end;
       padding:12px;
-      transition:background 0.3s ease;
     }
     .game-title{
       font-size:13px;
       font-weight:800;
       color:#fff;
       line-height:1.2;
-      text-shadow:0 2px 4px rgba(0,0,0,0.6);
-      transition:transform 0.3s ease;
     }
 
-    /* Pop-in Badge Animation */
     .check-badge{
       position:absolute;
       top:8px;
@@ -137,73 +131,44 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:13px;
+      font-size:12px;
       font-weight:bold;
-      box-shadow:0 3px 10px rgba(255,79,154,0.5);
       transform:scale(0);
       opacity:0;
-      transition:transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s ease;
+      transition:all 0.25s ease;
       z-index:2;
     }
 
-    /* Hover State */
     .game-card:hover{
-      transform:translateY(-7px) scale(1.02);
-      box-shadow:0 14px 28px rgba(255,79,154,0.22);
+      transform:translateY(-3px);
       border-color:rgba(255,79,154,0.4);
     }
-    .game-card:hover img{
-      transform:scale(1.12);
-      filter:brightness(1.05);
-    }
-    .game-card:hover .game-title{
-      transform:translateY(-2px);
-    }
-
-    /* Active Selected State */
     .game-card.active{
-      border-color:var(--pink);
-      box-shadow:0 0 0 4px rgba(255,79,154,0.25), 0 12px 28px rgba(255,79,154,0.35);
-      transform:translateY(-5px);
+      border-color:var(--pink) !important;
+      box-shadow:0 0 0 4px rgba(255,79,154,0.3) !important;
     }
-    .game-card.active img{
-      transform:scale(1.08);
-    }
-    .game-card.active .check-badge{
-      transform:scale(1);
-      opacity:1;
-    }
+    .game-card.active .check-badge{ transform:scale(1); opacity:1; }
 
-    /* ANIMASI FADE IN SMOOTH */
-    .dynamic-container{
-      display:none;
-      animation:fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .summary-card{
-      display:none;
-      position:sticky;
-      top:95px;
-      animation:fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    #accountSelectionSection{ display:none; background:#fcf8fc; padding:16px; border-radius:18px; border:1px dashed #e8d0e5; margin-bottom:20px; }
+    #dynamicContainer{ display:none; }
+    #summaryCard{ display:none; position:sticky; top:95px; }
 
-    .diamonds{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .diamond{border:1px solid var(--line);border-radius:16px;padding:15px;cursor:pointer;background:#fff;text-align:left;transition:.18s}
+    .diamonds{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-height:450px;overflow-y:auto;padding-right:6px;}
+    .diamonds::-webkit-scrollbar{width:6px}
+    .diamonds::-webkit-scrollbar-thumb{background:#ffd0e4;border-radius:10px}
+    .diamond{border:1px solid var(--line);border-radius:16px;padding:15px;cursor:pointer;background:#fff;text-align:left;transition:.18s;width:100%;-webkit-tap-highlight-color: transparent;}
     .diamond:hover{transform:translateY(-2px);border-color:#ff8abb}
     .diamond.active{border:2px solid var(--pink);background:#fff4f9}
-    .diamond strong{display:block;font-size:16px}
-    .diamond span{font-size:12px;color:var(--muted);display:block;margin-top:4px}
-    .price{font-weight:900;color:var(--pink);margin-top:8px}
+    .diamond strong{display:block;font-size:13px;color:var(--dark)}
+    .diamond span{font-size:11px;color:var(--muted);display:block;margin-top:4px}
+    .price{font-weight:900;color:var(--pink);margin-top:8px;font-size:14px}
     
     .summary h3{font-size:19px;margin-bottom:18px}
     .row{display:flex;justify-content:space-between;gap:15px;margin:13px 0;font-size:14px}
     .row span:first-child{color:var(--muted)}
     .total{border-top:1px dashed #ddd3df;padding-top:16px;margin-top:18px;font-size:18px;font-weight:900}
     .btn{width:100%;border:0;border-radius:14px;padding:14px 18px;background:linear-gradient(90deg,var(--pink),var(--purple));color:#fff;font-weight:900;font-size:14px;cursor:pointer;margin-top:18px}
-    .btn:hover{filter:brightness(1.04);transform:translateY(-1px)}
+    
     .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
     .feature{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
     .icon{font-size:26px;margin-bottom:10px}
@@ -211,36 +176,28 @@
     .feature p{font-size:12px;color:var(--muted);line-height:1.5}
     footer{background:#171322;color:#d9d3df;padding:35px 20px}
     .foot{max-width:1120px;margin:auto;display:flex;justify-content:space-between;gap:20px;align-items:center}
-    .foot strong{color:#fff}
-    .foot small{color:#aaa2b1}
     .toast{position:fixed;right:20px;bottom:20px;background:#171322;color:#fff;padding:14px 18px;border-radius:14px;box-shadow:var(--shadow);display:none;z-index:20;font-size:13px}
     
     @media(max-width:800px){
-      nav{display:none}
       .hero-box{grid-template-columns:1fr;padding:30px 20px}
       .layout{grid-template-columns:1fr}
-      .summary-card{position:static}
-      .game-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-      .diamonds{grid-template-columns:repeat(2,1fr)}
+      .game-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+      .diamonds{grid-template-columns:repeat(1,1fr)}
       .features{grid-template-columns:1fr}
-      .foot{flex-direction:column;align-items:flex-start}
     }
   </style>
 </head>
 <body>
-  <div class="topbar">⚡ Proses cepat • 💗 Aman & terpercaya • 💬 Bantuan via WhatsApp</div>
-  
+
   <header>
     <div class="nav">
       <div class="brand">
-        <!-- GAMBAR LOGO WEBSITE -->
         <img src="https://i.gyazo.com/cfac745f53209c476bae15eaf841ae00.png" alt="Logo JECIMARKET">
         <div class="logo">JECI<span>MARKET</span></div>
       </div>
       <nav>
-        <a href="#topup">Top Up</a>
-        <a href="#cara">Cara Order</a>
-        <a href="#bantuan">Bantuan</a>
+        <a href="#topup" class="nav-pill"><span>💎 Top Up</span></a>
+        <a href="https://wa.me/6281234567890" target="_blank" class="nav-pill"><span>💬 Admin</span></a>
       </nav>
     </div>
   </header>
@@ -249,82 +206,68 @@
     <section class="hero">
       <div class="hero-box">
         <div class="hero-content">
-          <div class="badge">💎 TOP UP DIAMOND</div>
-          <h1>Top Up Game<br>Jadi Lebih Gampang.</h1>
-          <p>Pilih game favoritmu, masukkan data akun, tentukan nominal, lalu checkout instan via WhatsApp.</p>
+          <div class="badge">💎 TOP UP & RENTAL</div>
+          <h1>Top Up & Sewa Game<br>Jadi Lebih Gampang.</h1>
+          <p>Pilih game/sewa akun, masukkan nomor WA/ID, tentukan paket, lalu checkout instan.</p>
         </div>
-        <!-- GAMBAR BANNER PROMO -->
-        <img class="hero-banner-img" src="https://via.placeholder.com/600x300/8b5cf6/ffffff?text=Promo+Top+Up+Gacor" alt="Banner Promo JECIMARKET">
+        <img class="hero-banner-img" src="https://i.gyazo.com/7463ea88263fda39e01d91eff1c7c7d8.png" alt="Banner Promo">
       </div>
     </section>
 
     <div class="wrap" id="topup">
       <div class="section-title">
-        <h2>Top Up Sekarang</h2>
-        <p>Pilih game terlebih dahulu untuk mulai pengisian data.</p>
+        <h2>Pilih Layanan</h2>
+        <p>Klik salah satu layanan di bawah ini.</p>
       </div>
 
       <div class="layout">
         <section class="card">
-          <!-- LANGKAH 1: HERO CARDS GAMBAR ALA CODASHOP WITH ANIMATIONS -->
+          <!-- STEP 1: PILIH GAME -->
           <div class="field">
-            <label>1. Pilih Game</label>
-            <div class="game-grid">
-              
-              <!-- Mobile Legends -->
-              <div class="game-card" onclick="selectGame('Mobile Legends', this)">
+            <label>1. Pilih Game / Layanan</label>
+            <div class="game-grid" id="mainGameGrid">
+              <div class="game-card card-ml" onclick="selectGame('Mobile Legends', this)">
                 <div class="check-badge">✓</div>
-                <img src="https://cdn1.codashop.com/S/content/mobile/images/product-tiles/MLBB-2025-tiles-178x178.jpg" alt="Mobile Legends">
-                <div class="game-card-overlay">
-                  <div class="game-title">Mobile Legends</div>
-                </div>
+                <div class="game-card-overlay"><div class="game-title">Mobile Legends</div></div>
               </div>
-
-              <!-- Free Fire -->
-              <div class="game-card" onclick="selectGame('Free Fire', this)">
+              <div class="game-card card-ff" onclick="selectGame('Free Fire', this)">
                 <div class="check-badge">✓</div>
-                <img src="https://cdn1.codashop.com/S/content/mobile/images/product-tiles/free-fire-tile-codacash-new.jpg" alt="Free Fire">
-                <div class="game-card-overlay">
-                  <div class="game-title">Free Fire</div>
-                </div>
+                <div class="game-card-overlay"><div class="game-title">Free Fire</div></div>
               </div>
-
-              <!-- Honor of Kings -->
-              <div class="game-card" onclick="selectGame('Honor of Kings', this)">
+              <div class="game-card card-ff-rental" onclick="selectGame('Rental Free Fire', this)">
                 <div class="check-badge">✓</div>
-                <img src="https://via.placeholder.com/300/171322/ff4f9a?text=Honor+of+Kings" alt="Honor of Kings">
-                <div class="game-card-overlay">
-                  <div class="game-title">Honor of Kings</div>
-                </div>
+                <div class="game-card-overlay"><div class="game-title">Rental Free Fire</div></div>
               </div>
-
-              <!-- Game Lainnya -->
-              <div class="game-card" onclick="selectGame('Game Lainnya', this)">
-                <div class="check-badge">✓</div>
-                <img src="https://via.placeholder.com/300/171322/ff4f9a?text=Game+Lainnya" alt="Game Lainnya">
-                <div class="game-card-overlay">
-                  <div class="game-title">Game Lainnya</div>
-                </div>
-              </div>
-
             </div>
           </div>
 
-          <!-- LANGKAH 2 & 3: ISI DATA & NOMINAL (Tampil Dinamis) -->
-          <div id="dynamicContainer" class="dynamic-container">
-            <!-- FIELD USER ID / SERVER (Rendered Dynamic) -->
+          <!-- STEP 1.5: SELEKSI AKUN (KHUSUS RENTAL FF) -->
+          <div class="field" id="accountSelectionSection">
+            <label style="color:#ff4f9a;">⚡ LANGKAH KEDUA: Pilih Akun Rental FF</label>
+            <div class="game-grid" style="grid-template-columns: repeat(2, 1fr);">
+              <div class="game-card card-acc1" onclick="selectAccount('Akun 1', this)">
+                <div class="check-badge">✓</div>
+                <div class="game-card-overlay"><div class="game-title">AKUN 1 (Sultan)</div></div>
+              </div>
+              <div class="game-card card-acc2" onclick="selectAccount('Akun 2', this)">
+                <div class="check-badge">✓</div>
+                <div class="game-card-overlay"><div class="game-title">AKUN 2 (Old)</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DYNAMIC FORM SETELAH DIPILIH -->
+          <div id="dynamicContainer">
             <div id="accountFields"></div>
 
             <div class="field">
-              <label>3. Pilih Nominal</label>
-              <div class="diamonds" id="diamond-list">
-                <!-- Rendered dynamically -->
-              </div>
+              <label id="nominalLabel">3. Pilih Nominal / Paket</label>
+              <div class="diamonds" id="diamond-list"></div>
             </div>
 
             <div class="field">
               <label for="payment">4. Metode Pembayaran</label>
-              <select id="payment">
+              <select id="payment" onchange="updateSummary()">
                 <option>QRIS</option>
                 <option>DANA</option>
                 <option>GoPay</option>
@@ -335,80 +278,113 @@
           </div>
         </section>
 
-        <!-- RINGKASAN PESANAN (Muncul Setelah Pilih Game) -->
+        <!-- RINGKASAN PESANAN -->
         <aside class="card summary-card" id="summaryCard">
           <h3>🧾 Ringkasan Pesanan</h3>
-          <div class="row"><span>Game</span><strong id="sGame">-</strong></div>
-          <div class="row"><span>User ID</span><strong id="sUser">-</strong></div>
-          <div class="row"><span>Nominal</span><strong id="sDiamond">-</strong></div>
+          <div class="row"><span>Layanan</span><strong id="sGame">-</strong></div>
+          <div class="row" id="sAccRow" style="display:none;"><span>Pilihan Akun</span><strong id="sAcc" style="color:var(--pink);">-</strong></div>
+          <div class="row"><span id="sUserLabel">User ID</span><strong id="sUser">-</strong></div>
+          <div class="row"><span id="sItemLabel">Paket</span><strong id="sDiamond">-</strong></div>
           <div class="row"><span>Pembayaran</span><strong id="sPayment">QRIS</strong></div>
           <div class="row total"><span>Total</span><strong id="sPrice">Rp0</strong></div>
-          <button class="btn" id="checkout">💬 Checkout via WhatsApp</button>
+          <button type="button" class="btn" id="checkout">💬 Checkout via WhatsApp</button>
         </aside>
       </div>
 
-      <div class="features" id="cara">
-        <div class="feature"><div class="icon">⚡</div><strong>Proses Cepat</strong><p>Pesanan diproses setelah pembayaran dikonfirmasi.</p></div>
-        <div class="feature"><div class="icon">🔒</div><strong>Aman</strong><p>Data yang dibutuhkan hanya data untuk proses top up.</p></div>
-        <div class="feature" id="bantuan"><div class="icon">💬</div><strong>Support</strong><p>Hubungi admin jika ada kendala pada pesanan.</p></div>
+      <div class="features">
+        <div class="feature"><div class="icon">⚡</div><strong>Sistem Otomatis</strong><p>Pesan dan bayar sewa/top up cepat dalam hitungan detik.</p></div>
+        <div class="feature"><div class="icon">💗</div><strong>Terpercaya</strong><p>Aman, legal, dan harga bersaing.</p></div>
+        <div class="feature"><div class="icon">💬</div><strong>Bantuan Fast Response</strong><p>Siap melayani kamu jika ada kendala.</p></div>
       </div>
     </div>
   </main>
 
   <footer>
     <div class="foot">
-      <div><strong>JECIMARKET</strong><br><small>Top Up Game • Cepat • Aman • Praktis</small></div>
-      <small>© 2026 JECIMARKET. All rights reserved.</small>
+      <div><strong>JECIMARKET</strong><br><small>Top Up Game & Rental FF</small></div>
+      <small>© 2026 JECIMARKET</small>
     </div>
   </footer>
 
-  <div class="toast" id="toast">Silakan isi User ID terlebih dahulu.</div>
+  <div class="toast" id="toast">Silakan isi data dengan lengkap.</div>
 
   <script>
     const ADMIN_WA = "6281234567890";
 
     const catalog = {
       "Mobile Legends": [
-        { diamond: "86", price: 20000 },
-        { diamond: "172", price: 39000 },
-        { diamond: "257", price: 57000 },
-        { diamond: "344", price: 76000 },
-        { diamond: "429", price: 95000 },
-        { diamond: "514", price: 113000 }
+        { diamond: "WDP (Weekly Diamond Pass)", price: 29000 },
+        { diamond: "50 Diamond", price: 13000 },
+        { diamond: "100 Diamond", price: 26500 },
+        { diamond: "150 Diamond", price: 40500 },
+        { diamond: "250 Diamond", price: 66000 },
+        { diamond: "300 Diamond", price: 79500 },
+        { diamond: "355 Diamond", price: 92000 },
+        { diamond: "406 Diamond", price: 106500 },
+        { diamond: "500 Diamond", price: 131000 },
+        { diamond: "600 Diamond", price: 154500 },
+        { diamond: "702 Diamond", price: 181000 },
+        { diamond: "841 Diamond", price: 219500 },
+        { diamond: "963 Diamond", price: 243000 },
+        { diamond: "1050 Diamond", price: 267500 },
+        { diamond: "1412 Diamond", price: 367500 },
+        { diamond: "2010 Diamond", price: 495500 },
+        { diamond: "4020 Diamond", price: 1010000 }
       ],
       "Free Fire": [
-        { diamond: "140", price: 19000 },
-        { diamond: "355", price: 48000 },
-        { diamond: "720", price: 95000 },
-        { diamond: "1440", price: 190000 }
+        { diamond: "Member mingguan", price: 27500 },
+        { diamond: "Member Bulanan", price: 81000 },
+        { diamond: "50 Diamond", price: 7000 },
+        { diamond: "70 Diamond", price: 9500 },
+        { diamond: "100 Diamond", price: 13000 },
+        { diamond: "140 Diamond", price: 17500 },
+        { diamond: "200 Diamond", price: 25500 },
+        { diamond: "250 Diamond", price: 31500 },
+        { diamond: "300 Diamond", price: 38000 },
+        { diamond: "355 Diamond", price: 44500 },
+        { diamond: "425 Diamond", price: 54000 },
+        { diamond: "500 Diamond", price: 63000 },
+        { diamond: "565 Diamond", price: 71500 },
+        { diamond: "600 Diamond", price: 76000 },
+        { diamond: "720 Diamond", price: 89000 },
+        { diamond: "860 Diamond", price: 105500 },
+        { diamond: "930 Diamond", price: 115000 },
+        { diamond: "1000 Diamond", price: 123500 },
+        { diamond: "1450 Diamond", price: 177000 },
+        { diamond: "2000 Diamond", price: 250000 },
+        { diamond: "3000 Diamond", price: 370000 },
+        { diamond: "4000 Diamond", price: 496000 },
+        { diamond: "7290 Diamond", price: 1058000 }
       ],
-      "Honor of Kings": [
-        { diamond: "80", price: 15000 },
-        { diamond: "240", price: 44000 },
-        { diamond: "400", price: 73000 }
-      ],
-      "Game Lainnya": [
-        { diamond: "Paket A", price: 25000 },
-        { diamond: "Paket B", price: 50000 },
-        { diamond: "Paket C", price: 100000 }
-      ]
+      "Rental Free Fire": {
+        "Akun 1": [
+          { diamond: "1 JAM", price: 15000 },
+          { diamond: "2 JAM", price: 25000 },
+          { diamond: "3 JAM", price: 35000 },
+          { diamond: "4 JAM", price: 45000 },
+          { diamond: "5 JAM", price: 60000 },
+          { diamond: "Paket Pagi (06.00-12.00 PM)", price: 75000 },
+          { diamond: "PAKET SEKOLAH (12.00-06.00 PM)", price: 75000 },
+          { diamond: "Paket Gadang (00.00-08.00 PM)", price: 75000 },
+          { diamond: "FULL DAY (24 JAM)", price: 150000 }
+        ],
+        "Akun 2": [
+          { diamond: "1 JAM", price: 15000 },
+          { diamond: "2 JAM", price: 25000 },
+          { diamond: "3 JAM", price: 35000 },
+          { diamond: "4 JAM", price: 45000 },
+          { diamond: "5 JAM", price: 55000 },
+          { diamond: "Paket Pagi (06.00-12.00 PM)", price: 70000 },
+          { diamond: "PAKET SEKOLAH (12.00-06.00 PM)", price: 70000 },
+          { diamond: "Paket Gadang (00.00-08.00 PM)", price: 70000 },
+          { diamond: "FULL DAY (24 JAM)", price: 150000 }
+        ]
+      }
     };
 
     let selectedGame = "";
+    let selectedAcc = "";
     let selectedItem = { diamond: "", price: 0 };
-
-    const dynamicContainer = document.getElementById("dynamicContainer");
-    const summaryCard = document.getElementById("summaryCard");
-    const accountFields = document.getElementById("accountFields");
-    const diamondListEl = document.getElementById("diamond-list");
-    const paymentEl = document.getElementById("payment");
-
-    const sGame = document.getElementById("sGame");
-    const sUser = document.getElementById("sUser");
-    const sDiamond = document.getElementById("sDiamond");
-    const sPayment = document.getElementById("sPayment");
-    const sPrice = document.getElementById("sPrice");
-    const toast = document.getElementById("toast");
 
     function rupiah(n) {
       return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(n);
@@ -416,25 +392,71 @@
 
     function selectGame(gameName, el) {
       selectedGame = gameName;
+      selectedAcc = "";
 
-      // Highlight Hero Card yang dipilih
-      document.querySelectorAll('.game-card').forEach(card => card.classList.remove('active'));
+      document.querySelectorAll('#mainGameGrid .game-card').forEach(c => c.classList.remove('active'));
       el.classList.add('active');
 
-      // MUNCULKAN FORM & RINGKASAN PESANAN
-      dynamicContainer.style.display = "block";
-      summaryCard.style.display = "block";
+      const accSec = document.getElementById("accountSelectionSection");
+      const dynContainer = document.getElementById("dynamicContainer");
+      const sumCard = document.getElementById("summaryCard");
 
-      // Render field ID akun & Nominal
-      renderAccountFields(gameName);
-      renderDiamonds(gameName);
+      if (gameName === "Rental Free Fire") {
+        accSec.style.display = "block";
+        dynContainer.style.display = "none";
+        sumCard.style.display = "none";
+        document.querySelectorAll('.card-acc1, .card-acc2').forEach(c => c.classList.remove('active'));
+        accSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        accSec.style.display = "none";
+        dynContainer.style.display = "block";
+        sumCard.style.display = "block";
+        document.getElementById("sAccRow").style.display = "none";
+        renderFieldsAndPrices();
+      }
     }
 
-    function renderAccountFields(gameName) {
-      if (gameName === "Mobile Legends") {
+    function selectAccount(accName, el) {
+      selectedAcc = accName;
+
+      document.querySelectorAll('.card-acc1, .card-acc2').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+
+      const dynContainer = document.getElementById("dynamicContainer");
+      const sumCard = document.getElementById("summaryCard");
+
+      dynContainer.style.display = "block";
+      sumCard.style.display = "block";
+      document.getElementById("sAccRow").style.display = "flex";
+
+      renderFieldsAndPrices();
+      dynContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function renderFieldsAndPrices() {
+      const accountFields = document.getElementById("accountFields");
+      const diamondListEl = document.getElementById("diamond-list");
+
+      if (selectedGame === "Rental Free Fire") {
+        document.getElementById("nominalLabel").textContent = "3. Pilih Durasi / Paket Sewa";
+        document.getElementById("sUserLabel").textContent = "No. WhatsApp";
+        document.getElementById("sItemLabel").textContent = "Paket Sewa";
+
         accountFields.innerHTML = `
           <div class="field">
-            <label>2. Masukkan Data Akun</label>
+            <label for="userid">2. Nomor WhatsApp Penyewa</label>
+            <input id="userid" type="text" placeholder="Contoh: 08123456789" oninput="updateSummary()">
+            <input id="server" type="hidden" value="">
+          </div>
+        `;
+      } else if (selectedGame === "Mobile Legends") {
+        document.getElementById("nominalLabel").textContent = "3. Pilih Nominal Diamond";
+        document.getElementById("sUserLabel").textContent = "User ID";
+        document.getElementById("sItemLabel").textContent = "Nominal";
+
+        accountFields.innerHTML = `
+          <div class="field">
+            <label>2. Masukkan Data Akun ML</label>
             <div style="display:grid;grid-template-columns:2fr 1fr;gap:10px;">
               <input id="userid" type="text" placeholder="User ID (12345678)" oninput="updateSummary()">
               <input id="server" type="text" placeholder="Zone ID (1234)" oninput="updateSummary()">
@@ -442,35 +464,47 @@
           </div>
         `;
       } else {
+        document.getElementById("nominalLabel").textContent = "3. Pilih Nominal Diamond";
+        document.getElementById("sUserLabel").textContent = "User ID";
+        document.getElementById("sItemLabel").textContent = "Nominal";
+
         accountFields.innerHTML = `
           <div class="field">
-            <label for="userid">2. Masukkan User ID</label>
+            <label for="userid">2. Masukkan User ID FF</label>
             <input id="userid" type="text" placeholder="Contoh: 123456789" oninput="updateSummary()">
             <input id="server" type="hidden" value="">
           </div>
         `;
       }
-    }
 
-    function renderDiamonds(gameName) {
       diamondListEl.innerHTML = "";
-      const items = catalog[gameName] || [];
+      let items = [];
+
+      if (selectedGame === "Rental Free Fire") {
+        items = catalog["Rental Free Fire"][selectedAcc] || [];
+      } else {
+        items = catalog[selectedGame] || [];
+      }
 
       items.forEach((item, index) => {
         const btn = document.createElement("button");
+        btn.type = "button";
         btn.className = `diamond ${index === 0 ? "active" : ""}`;
+        const icon = selectedGame === "Rental Free Fire" ? "🔑" : "💎";
+        const subtext = selectedGame === "Rental Free Fire" ? "Ready akun" : "Instant top up";
+
         btn.innerHTML = `
-          <strong>💎 ${item.diamond} ${isNaN(item.diamond) ? '' : 'Diamond'}</strong>
-          <span>Instant top up</span>
+          <strong>${icon} ${item.diamond}</strong>
+          <span>${subtext}</span>
           <div class="price">${rupiah(item.price)}</div>
         `;
 
-        btn.addEventListener("click", () => {
+        btn.onclick = function() {
           document.querySelectorAll(".diamond").forEach(x => x.classList.remove("active"));
           btn.classList.add("active");
           selectedItem = item;
           updateSummary();
-        });
+        };
 
         diamondListEl.appendChild(btn);
       });
@@ -482,38 +516,44 @@
     function updateSummary() {
       const useridEl = document.getElementById("userid");
       const serverEl = document.getElementById("server");
+      const paymentEl = document.getElementById("payment");
 
       const idVal = useridEl ? useridEl.value.trim() : "";
       const serverVal = serverEl ? serverEl.value.trim() : "";
 
-      sGame.textContent = selectedGame || "-";
-      sUser.textContent = idVal ? (serverVal ? `${idVal} (${serverVal})` : idVal) : "-";
-      sPayment.textContent = paymentEl.value;
-      sDiamond.textContent = selectedItem.diamond ? `${selectedItem.diamond} ${isNaN(selectedItem.diamond) ? '' : 'Diamond'}` : "-";
-      sPrice.textContent = rupiah(selectedItem.price);
+      document.getElementById("sGame").textContent = selectedGame || "-";
+      document.getElementById("sAcc").textContent = selectedAcc || "-";
+      document.getElementById("sUser").textContent = idVal ? (serverVal ? `${idVal} (${serverVal})` : idVal) : "-";
+      document.getElementById("sPayment").textContent = paymentEl ? paymentEl.value : "QRIS";
+      document.getElementById("sDiamond").textContent = selectedItem.diamond || "-";
+      document.getElementById("sPrice").textContent = rupiah(selectedItem.price);
     }
-
-    paymentEl.addEventListener("change", updateSummary);
 
     document.getElementById("checkout").addEventListener("click", () => {
       const useridEl = document.getElementById("userid");
       const serverEl = document.getElementById("server");
+      const paymentEl = document.getElementById("payment");
 
       if (!selectedGame || !useridEl || !useridEl.value.trim()) {
+        const toast = document.getElementById("toast");
+        toast.textContent = selectedGame === "Rental Free Fire" ? "Silakan isi nomor WhatsApp terlebih dahulu." : "Silakan isi User ID terlebih dahulu.";
         toast.style.display = "block";
         setTimeout(() => toast.style.display = "none", 2500);
         if (useridEl) useridEl.focus();
         return;
       }
 
+      const accText = selectedGame === "Rental Free Fire" ? `\n👤 Pilihan Akun: ${selectedAcc}` : "";
+      const userLabelText = selectedGame === "Rental Free Fire" ? "No. WhatsApp Penyewa" : "User ID";
+
       const textMessage = 
 `Halo Admin JECIMARKET 👋
 
-Saya ingin melakukan top up:
-🎮 Game: ${selectedGame}
-🆔 User ID: ${useridEl.value.trim()}
-🌐 Server/Zone: ${serverEl ? (serverEl.value.trim() || "-") : "-"}
-💎 Nominal: ${selectedItem.diamond} Diamond
+Saya ingin melakukan pesanan:
+🎮 Layanan: ${selectedGame}${accText}
+🆔 ${userLabelText}: ${useridEl.value.trim()}
+🌐 Zone/Server: ${serverEl ? (serverEl.value.trim() || "-") : "-"}
+📦 Paket/Nominal: ${selectedItem.diamond}
 💳 Pembayaran: ${paymentEl.value}
 💰 Total: ${rupiah(selectedItem.price)}
 
