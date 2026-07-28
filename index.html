@@ -20,7 +20,6 @@
     .slide.active {
       display: block;
     }
-    /* Smooth Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
     }
@@ -31,11 +30,6 @@
       background: #f43f5e;
       border-radius: 10px;
     }
-    /* Aspect Ratio Helper for 1:1 Square */
-    .aspect-square-box {
-      aspect-ratio: 1 / 1;
-    }
-    /* Modal Animation */
     .modal-overlay {
       opacity: 0;
       visibility: hidden;
@@ -51,6 +45,18 @@
     }
     .modal-overlay.active .modal-card {
       transform: scale(1);
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 25s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
     }
   </style>
 </head>
@@ -95,7 +101,7 @@
         <span class="inline-flex items-center space-x-1 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-extrabold tracking-wider uppercase mb-3 text-white border border-white/20">
           🔥 Promo Spesial Hari Ini
         </span>
-        <h2 class="text-2xl md:text-3xl font-black mb-2 leading-tight">Top Up MLBB Murah & Instant</h2>
+        <h2 class="text-2xl md:text-3xl font-black mb-2 leading-tight">Top Up MLBB & FF Murah</h2>
         <p class="text-pink-100 text-xs md:text-sm max-w-md font-medium">Dapatkan bonus diamond melimpah dan proses sistem otomatis dalam hitungan detik!</p>
       </div>
       
@@ -114,7 +120,106 @@
       </div>
     </div>
 
-    <!-- SECTION 1: PILIH GAME / LAYANAN -->
+    <!-- SECTION: ANIMASI TESTIMONI & KEPUASAN PELANGGAN -->
+    <section class="space-y-3 overflow-hidden">
+      <div class="flex items-center justify-between px-1">
+        <h3 class="text-sm font-black text-slate-800 flex items-center space-x-2">
+          <span class="w-2.5 h-5 bg-pink-500 rounded-full block"></span>
+          <span>Testimoni & Kepuasan Pelanggan</span>
+        </h3>
+        <span class="text-[10px] font-extrabold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100 flex items-center space-x-1">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>100% Terpercaya</span>
+        </span>
+      </div>
+
+      <!-- Auto Scrolling Marquee -->
+      <div class="relative w-full overflow-hidden py-1">
+        <div class="animate-marquee flex space-x-4">
+          <!-- Item Set 1 -->
+          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
+            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
+              <i class="fa-solid fa-user-check"></i>
+            </div>
+            <div class="text-xs overflow-hidden">
+              <div class="flex items-center space-x-1.5">
+                <span class="font-extrabold text-slate-800 truncate">Rizky (Bandung)</span>
+                <span class="text-amber-400 text-[10px]">★★★★★</span>
+              </div>
+              <p class="text-slate-500 truncate text-[11px] mt-0.5">"Top up 702 Diamond MLBB masuk 2 detik, mantap!"</p>
+            </div>
+          </div>
+
+          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
+            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <div class="text-xs overflow-hidden">
+              <div class="flex items-center space-x-1.5">
+                <span class="font-extrabold text-slate-800 truncate">Dimas (Jakarta)</span>
+                <span class="text-amber-400 text-[10px]">★★★★★</span>
+              </div>
+              <p class="text-slate-500 truncate text-[11px] mt-0.5">"Sewa Akun 1 SG2 ungu gacor parah, amanah!"</p>
+            </div>
+          </div>
+
+          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
+            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="text-xs overflow-hidden">
+              <div class="flex items-center space-x-1.5">
+                <span class="font-extrabold text-slate-800 truncate">Putri (Surabaya)</span>
+                <span class="text-amber-400 text-[10px]">★★★★★</span>
+              </div>
+              <p class="text-slate-500 truncate text-[11px] mt-0.5">"QRIS otomatis scan langsung beres, cepet banget."</p>
+            </div>
+          </div>
+
+          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
+            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="text-xs overflow-hidden">
+              <div class="flex items-center space-x-1.5">
+                <span class="font-extrabold text-slate-800 truncate">Fajar (Medan)</span>
+                <span class="text-amber-400 text-[10px]">★★★★★</span>
+              </div>
+              <p class="text-slate-500 truncate text-[11px] mt-0.5">"Member mingguan FF langsung masuk akun. Recomended!"</p>
+            </div>
+          </div>
+
+          <!-- Duplicate Set for Seamless Loop -->
+          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
+            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
+              <i class="fa-solid fa-user-check"></i>
+            </div>
+            <div class="text-xs overflow-hidden">
+              <div class="flex items-center space-x-1.5">
+                <span class="font-extrabold text-slate-800 truncate">Rizky (Bandung)</span>
+                <span class="text-amber-400 text-[10px]">★★★★★</span>
+              </div>
+              <p class="text-slate-500 truncate text-[11px] mt-0.5">"Top up 702 Diamond MLBB masuk 2 detik, mantap!"</p>
+            </div>
+          </div>
+
+          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
+            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <div class="text-xs overflow-hidden">
+              <div class="flex items-center space-x-1.5">
+                <span class="font-extrabold text-slate-800 truncate">Dimas (Jakarta)</span>
+                <span class="text-amber-400 text-[10px]">★★★★★</span>
+              </div>
+              <p class="text-slate-500 truncate text-[11px] mt-0.5">"Sewa Akun 1 SG2 ungu gacor parah, amanah!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: PILIH LAYANAN -->
     <section id="section-pilih-game" class="space-y-4">
       <div class="flex items-center justify-between">
         <h3 class="text-lg font-black text-slate-800 flex items-center space-x-2">
@@ -145,7 +250,7 @@
           <p class="text-[11px] text-slate-400 mt-0.5 font-medium">Top Up Diamonds</p>
         </div>
 
-        <!-- Rental FF -->
+        <!-- Rental Akun FF -->
         <div onclick="openRentalForm()" class="group relative bg-white p-5 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-pink-500/10 hover:border-pink-300 transition-all duration-300 cursor-pointer flex flex-col items-center text-center col-span-2 md:col-span-1 transform hover:-translate-y-1">
           <span class="absolute top-3 right-3 px-2 py-0.5 bg-emerald-500 text-white font-extrabold text-[9px] rounded-full uppercase tracking-wider shadow-sm">READY</span>
           <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-600 text-white font-black text-2xl flex items-center justify-center shadow-lg shadow-pink-500/20 mb-3 group-hover:scale-110 transition-transform">
@@ -157,14 +262,13 @@
       </div>
     </section>
 
-    <!-- SECTION 2: FORM TOP UP (ML & FF) -->
+    <!-- SECTION 2: FORM TOP UP -->
     <section id="section-form-topup" class="hidden space-y-6">
       <button onclick="resetToSelection()" class="inline-flex items-center space-x-2 text-xs font-bold text-pink-600 hover:text-pink-700 bg-pink-50 hover:bg-pink-100/80 px-4 py-2 rounded-xl border border-pink-100 transition-all">
         <i class="fa-solid fa-arrow-left"></i>
         <span>Kembali Pilih Layanan</span>
       </button>
 
-      <!-- Game Info Header -->
       <div class="bg-white p-5 rounded-3xl border border-slate-100 shadow-sm flex items-center space-x-4">
         <div id="active-game-icon" class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-600 text-white font-black text-xl flex items-center justify-center shadow-md">
           ML
@@ -178,66 +282,198 @@
         </div>
       </div>
 
-      <!-- Step 1: Input Account ID -->
+      <!-- Step 1: Input Data Akun -->
       <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
         <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
           <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">1</span>
           <span>Masukkan Data Akun</span>
         </h4>
-
-        <!-- ML Form -->
         <div id="form-input-ml" class="grid grid-cols-2 gap-3">
           <input type="text" id="ml-user-id" placeholder="User ID (cth: 12345678)" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium transition-all bg-slate-50/50 focus:bg-white">
           <input type="text" id="ml-zone-id" placeholder="Zone ID (cth: 1234)" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium transition-all bg-slate-50/50 focus:bg-white">
         </div>
-
-        <!-- FF Form -->
         <div id="form-input-ff" class="hidden">
           <input type="text" id="ff-player-id" placeholder="Masukkan Player ID Free Fire" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium transition-all bg-slate-50/50 focus:bg-white">
         </div>
       </div>
 
-      <!-- Step 2: Select Item -->
+      <!-- Step 2: Pilih Nominal Item -->
       <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
         <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
           <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">2</span>
-          <span>Pilih Nominal Diamonds</span>
+          <span>Pilih Nominal Item</span>
         </h4>
-
-        <!-- Items ML -->
+        
+        <!-- Mobile Legends Items -->
         <div id="items-ml" class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <button onclick="setItem('86 Diamonds', 20000, this)" class="item-btn p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left transition-all duration-200 shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">86 Diamonds</p>
-            <p class="text-xs text-pink-600 font-extrabold mt-1">Rp 20.000</p>
+          <button onclick="setItem('WDP', 29000, this)" class="item-btn p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left transition-all duration-200 shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">WDP</p>
+            <p class="text-xs text-pink-600 font-extrabold mt-1">Rp 29.000</p>
           </button>
-          <button onclick="setItem('172 Diamonds', 40000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">172 Diamonds</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 40.000</p>
+          <button onclick="setItem('50 Diamond', 13000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">50 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 13.000</p>
           </button>
-          <button onclick="setItem('257 Diamonds', 60000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">257 Diamonds</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 60.000</p>
+          <button onclick="setItem('100 Diamond', 26500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">100 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 26.500</p>
+          </button>
+          <button onclick="setItem('150 Diamond', 40500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">150 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 40.500</p>
+          </button>
+          <button onclick="setItem('250 Diamond', 66000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">250 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 66.000</p>
+          </button>
+          <button onclick="setItem('300 Diamond', 79500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">300 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 79.500</p>
+          </button>
+          <button onclick="setItem('355 Diamond', 92000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">355 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 92.000</p>
+          </button>
+          <button onclick="setItem('406 Diamond', 106500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">406 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 106.500</p>
+          </button>
+          <button onclick="setItem('500 Diamond', 131000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">500 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 131.000</p>
+          </button>
+          <button onclick="setItem('600 Diamond', 154500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">600 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 154.500</p>
+          </button>
+          <button onclick="setItem('702 Diamond', 181000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">702 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 181.000</p>
+          </button>
+          <button onclick="setItem('841 Diamond', 219500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">841 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 219.500</p>
+          </button>
+          <button onclick="setItem('963 Diamond', 243000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">963 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 243.000</p>
+          </button>
+          <button onclick="setItem('1050 Diamond', 267500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">1050 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 267.500</p>
+          </button>
+          <button onclick="setItem('1412 Diamond', 367500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">1412 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 367.500</p>
+          </button>
+          <button onclick="setItem('2010 Diamond', 495500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">2010 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 495.500</p>
+          </button>
+          <button onclick="setItem('4020 Diamond', 1010000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">4020 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 1.010.000</p>
           </button>
         </div>
 
-        <!-- Items FF -->
+        <!-- Free Fire Items -->
         <div id="items-ff" class="hidden grid grid-cols-2 md:grid-cols-3 gap-3">
-          <button onclick="setItem('50 Diamonds', 8000, this)" class="item-btn p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left transition-all duration-200 shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">50 Diamonds</p>
-            <p class="text-xs text-pink-600 font-extrabold mt-1">Rp 8.000</p>
+          <button onclick="setItem('Member Mingguan', 27500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">Member Mingguan</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 27.500</p>
           </button>
-          <button onclick="setItem('140 Diamonds', 20000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">140 Diamonds</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 20.000</p>
+          <button onclick="setItem('Member Bulanan', 81000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">Member Bulanan</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 81.000</p>
           </button>
-          <button onclick="setItem('355 Diamonds', 50000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">355 Diamonds</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 50.000</p>
+          <button onclick="setItem('50 Diamond', 7000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">50 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 7.000</p>
+          </button>
+          <button onclick="setItem('70 Diamond', 9500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">70 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 9.500</p>
+          </button>
+          <button onclick="setItem('100 Diamond', 13000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">100 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 13.000</p>
+          </button>
+          <button onclick="setItem('140 Diamond', 17500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">140 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 17.500</p>
+          </button>
+          <button onclick="setItem('200 Diamond', 25500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">200 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 25.500</p>
+          </button>
+          <button onclick="setItem('250 Diamond', 31500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">250 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 31.500</p>
+          </button>
+          <button onclick="setItem('300 Diamond', 38000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">300 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 38.000</p>
+          </button>
+          <button onclick="setItem('355 Diamond', 44500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">355 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 44.500</p>
+          </button>
+          <button onclick="setItem('425 Diamond', 54000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">425 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 54.000</p>
+          </button>
+          <button onclick="setItem('500 Diamond', 63000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">500 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 63.000</p>
+          </button>
+          <button onclick="setItem('565 Diamond', 71500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">565 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 71.500</p>
+          </button>
+          <button onclick="setItem('600 Diamond', 76000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">600 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 76.000</p>
+          </button>
+          <button onclick="setItem('720 Diamond', 89000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">720 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 89.000</p>
+          </button>
+          <button onclick="setItem('860 Diamond', 105500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">860 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 105.500</p>
+          </button>
+          <button onclick="setItem('930 Diamond', 115000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">930 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 115.000</p>
+          </button>
+          <button onclick="setItem('1000 Diamond', 123500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">1000 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 123.500</p>
+          </button>
+          <button onclick="setItem('1450 Diamond', 177000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">1450 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 177.000</p>
+          </button>
+          <button onclick="setItem('2000 Diamond', 250000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">2000 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 250.000</p>
+          </button>
+          <button onclick="setItem('3000 Diamond', 370000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">3000 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 370.000</p>
+          </button>
+          <button onclick="setItem('4000 Diamond', 496000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">4000 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 496.000</p>
+          </button>
+          <button onclick="setItem('7290 Diamond', 1058000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
+            <p class="font-bold text-slate-900 text-sm">7290 Diamond</p>
+            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 1.058.000</p>
           </button>
         </div>
       </div>
 
-      <!-- Step 3: Nomor Pelanggan / WhatsApp -->
+      <!-- Step 3: Nomor WhatsApp Pelanggan -->
       <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-3">
         <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
           <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">3</span>
@@ -247,7 +483,7 @@
         <p class="text-[11px] text-slate-400 font-medium">*Bukti pembayaran & status pengiriman akan dikirimkan ke WhatsApp ini.</p>
       </div>
 
-      <!-- Step 4: Payment Method (METODE PEMBAYARAN RAPI TERMASUK SHOPEEPAY) -->
+      <!-- Step 4: Metode Pembayaran -->
       <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
         <div class="flex items-center justify-between">
           <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
@@ -267,10 +503,10 @@
               </div>
               <div>
                 <span class="font-bold text-xs text-slate-800 block">QRIS All Payment</span>
-                <span class="text-[10px] text-slate-400 block">Scan via Semua e-Wallet/Bank</span>
+                <span class="text-[10px] text-slate-400 block">Scan Otomatis (Semua e-Wallet)</span>
               </div>
             </div>
-            <span class="text-[9px] font-extrabold text-emerald-600 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-md uppercase">Instan</span>
+            <span class="text-[9px] font-extrabold text-emerald-600 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-md uppercase">Otomatis</span>
           </button>
 
           <!-- Option 2: DANA -->
@@ -315,7 +551,7 @@
             <span class="text-[9px] font-extrabold text-emerald-600 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-md uppercase">Otomatis</span>
           </button>
 
-          <!-- Option 5: Transfer Bank (BCA) - Ukuran Kolom disamakan (tanpa sm:col-span-2) -->
+          <!-- Option 5: Transfer Bank BCA -->
           <button onclick="setPayment('Transfer Bank BCA', this)" class="pay-btn p-3.5 rounded-2xl border border-slate-200 hover:border-pink-300 text-left flex items-center justify-between transition-all duration-200 hover:scale-[1.01]">
             <div class="flex items-center space-x-3">
               <div class="w-12 h-8 bg-white rounded-lg border border-slate-100 p-1 flex items-center justify-center shadow-2xs">
@@ -332,20 +568,20 @@
         </div>
       </div>
 
-      <!-- Order Summary & Checkout -->
+      <!-- Ringkasan & Checkout Top Up -->
       <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-xl space-y-4 relative overflow-hidden">
         <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-pink-500/10 rounded-full blur-xl pointer-events-none"></div>
         
         <div class="space-y-2 text-xs text-slate-300 border-b border-slate-800 pb-4">
           <div class="flex justify-between"><span>Game:</span><span id="summary-game" class="font-extrabold text-white">Mobile Legends</span></div>
-          <div class="flex justify-between"><span>Item Nominal:</span><span id="summary-item" class="font-extrabold text-white">86 Diamonds</span></div>
+          <div class="flex justify-between"><span>Item Nominal:</span><span id="summary-item" class="font-extrabold text-white">WDP</span></div>
           <div class="flex justify-between"><span>Metode Pembayaran:</span><span id="summary-payment" class="font-extrabold text-pink-400">QRIS All Payment</span></div>
         </div>
 
         <div class="flex items-center justify-between pt-1">
           <div>
             <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Total Tagihan</p>
-            <p id="summary-price" class="text-2xl font-black text-pink-400">Rp 20.000</p>
+            <p id="summary-price" class="text-2xl font-black text-pink-400">Rp 29.000</p>
           </div>
           <button type="button" onclick="processPayment()" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-7 py-3.5 rounded-2xl font-black text-sm shadow-lg shadow-pink-500/25 active:scale-95 transition-all">
             Bayar Sekarang
@@ -354,7 +590,7 @@
       </div>
     </section>
 
-    <!-- SECTION 3: FORM RENTAL FF -->
+    <!-- SECTION 3: FORM RENTAL AKUN FF -->
     <section id="section-form-rental" class="hidden space-y-6">
       <button onclick="resetToSelection()" class="inline-flex items-center space-x-2 text-xs font-bold text-pink-600 hover:text-pink-700 bg-pink-50 hover:bg-pink-100/80 px-4 py-2 rounded-xl border border-pink-100 transition-all">
         <i class="fa-solid fa-arrow-left"></i>
@@ -371,7 +607,7 @@
         </div>
       </div>
 
-      <!-- Pilih Tipe Akun -->
+      <!-- Pilih Akun -->
       <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
         <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
           <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">1</span>
@@ -393,7 +629,7 @@
           <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">2</span>
           <span>Pilih Durasi Sewa</span>
         </h4>
-        <div id="rental-packages-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div id="rental-packages-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3">
           <!-- Dynamic packages -->
         </div>
       </div>
@@ -407,7 +643,7 @@
         <input type="text" id="rental-phone" placeholder="Contoh: 081234567890" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium transition-all bg-slate-50/50 focus:bg-white">
       </div>
 
-      <!-- Summary Rental -->
+      <!-- Ringkasan & Checkout Rental -->
       <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-xl space-y-4">
         <div class="space-y-2 text-xs text-slate-300 border-b border-slate-800 pb-3">
           <div class="flex justify-between"><span>Pilihan Akun:</span><span id="rental-summary-account" class="font-extrabold text-white">Akun 1</span></div>
@@ -427,48 +663,6 @@
 
   </main>
 
-  <!-- ========================================== -->
-  <!-- POPUP GAMBAR 1:1 SIMPEL (AUTOLOAD REFRESH) -->
-  <!-- ========================================== -->
-  <div id="modal-image-promo" class="modal-overlay active fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md" onclick="handleBackdropClick(event, 'modal-image-promo')">
-    
-    <!-- Modal Container (Square 1:1 Box) -->
-    <div class="modal-card relative w-full max-w-sm bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-white/20">
-      
-      <!-- Tombol Close (X) di Pojok Atas Gambar -->
-      <button onclick="closeModal('modal-image-promo')" aria-label="Tutup Pop-up" class="absolute top-3 right-3 z-20 w-9 h-9 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-transform hover:scale-110 shadow-lg focus:outline-none">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-
-      <!-- 1:1 Aspect Ratio Image Wrapper -->
-      <div class="w-full aspect-square-box bg-slate-900 relative overflow-hidden group">
-        <!-- Promo Banner Image (1:1 Ratio) -->
-        <img src="https://picsum.photos/800/800?random=10" alt="Promo JECIMARKET" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-        
-        <!-- Subtle Gradient Overlay at Bottom -->
-        <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end p-4">
-          <div>
-            <span class="inline-block px-2.5 py-0.5 bg-rose-500 text-white font-extrabold text-[10px] rounded-full uppercase tracking-wider mb-1">
-              PROMO HOT
-            </span>
-            <h4 class="text-white font-black text-sm drop-shadow-sm leading-tight">EVENT DISKON TOP UP & RENTAL</h4>
-          </div>
-        </div>
-      </div>
-
-      <!-- Action Footer -->
-      <div class="p-3.5 bg-white flex items-center justify-between gap-2 border-t border-slate-100">
-        <p class="text-[11px] text-slate-500 font-semibold truncate">
-          <i class="fa-solid fa-sparkles text-amber-400 mr-1"></i> Promo Terbatas Hari Ini!
-        </p>
-        <button onclick="closeModal('modal-image-promo')" class="px-4 py-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs font-black rounded-xl shadow-md shadow-pink-500/20 transition-all active:scale-95 shrink-0">
-          Klaim Sekarang
-        </button>
-      </div>
-
-    </div>
-  </div>
-
   <!-- MODAL CUSTOMER SERVICE -->
   <div id="modal-cs" class="modal-overlay fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4" onclick="handleBackdropClick(event, 'modal-cs')">
     <div class="modal-card bg-white w-full max-w-sm rounded-3xl p-6 space-y-5 shadow-2xl border border-slate-100">
@@ -479,14 +673,14 @@
         </button>
       </div>
       <p class="text-xs text-slate-500 font-medium leading-relaxed">Ada kendala transaksi atau rental akun? CS kami siap membantu 24/7 melalui WhatsApp.</p>
-      <a href="https://wa.me/6282260397943" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center space-x-2 text-sm">
+      <a href="https://wa.me/6281234567890" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center space-x-2 text-sm">
         <i class="fa-brands fa-whatsapp text-lg"></i>
         <span>Hubungi CS via WhatsApp</span>
       </a>
     </div>
   </div>
 
-  <!-- MODAL CEK TRANSAKSI -->
+  <!-- MODAL CEK STATUS PESANAN -->
   <div id="modal-cek" class="modal-overlay fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4" onclick="handleBackdropClick(event, 'modal-cek')">
     <div class="modal-card bg-white w-full max-w-sm rounded-3xl p-6 space-y-5 shadow-2xl border border-slate-100">
       <div class="flex items-center justify-between">
@@ -499,204 +693,131 @@
       <div class="space-y-4">
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1.5">Nomor Invoice / WhatsApp</label>
-          <input type="text" id="input-trx-id" placeholder="Contoh: INV12345 atau 08123456789" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium transition-all">
+          <input type="text" id="input-trx-id" placeholder="Contoh: INV12345 atau 08123456789" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium">
+          <button type="button" onclick="checkInvoiceStatus()" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 rounded-2xl shadow-lg shadow-pink-500/20 transition-all flex items-center justify-center space-x-2 text-sm mt-3">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Cek Status</span>
+          </button>
         </div>
-        <button type="button" onclick="searchTransaction()" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 rounded-2xl shadow-md transition-all active:scale-95 text-sm">
-          Lakukan Pencarian
-        </button>
-      </div>
 
-      <div id="result-trx" class="hidden p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-2">
-        <div class="flex justify-between"><span class="text-slate-500">Status:</span><span class="font-bold text-emerald-600">BERHASIL / Selesai</span></div>
-        <div class="flex justify-between"><span class="text-slate-500">Layanan:</span><span class="font-semibold text-slate-800">Mobile Legends - 86 Diamonds</span></div>
-        <div class="flex justify-between"><span class="text-slate-500">Waktu:</span><span class="text-slate-700">28 Juli 2026, 12:30 WIB</span></div>
+        <div id="trx-result" class="hidden p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
+          <p class="font-bold text-slate-800" id="trx-result-title">Invoice: INV-892347</p>
+          <p class="text-emerald-600 font-extrabold flex items-center space-x-1">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Status: BERHASIL</span>
+          </p>
+          <p class="text-slate-500">Item: <span id="trx-result-item" class="font-semibold text-slate-700">Top Up Game</span></p>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- MODAL POP-UP QRIS + INVOICE + UPLOAD BUKTI -->
-  <div id="modal-qris" class="modal-overlay fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" onclick="handleBackdropClick(event, 'modal-qris')">
-    <div class="modal-card bg-white w-full max-w-sm rounded-3xl p-6 space-y-4 shadow-2xl text-center my-auto max-h-[90vh] overflow-y-auto border border-slate-100">
-      
-      <!-- Header Modal -->
+  <!-- MODAL QRIS OTOMATIS & UPLOAD BUKTI -->
+  <div id="modal-qris" class="modal-overlay fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="modal-card bg-white w-full max-w-md rounded-3xl p-6 space-y-4 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <div class="text-left">
-          <h3 class="font-black text-slate-800 text-base">Invoice & Pembayaran</h3>
-          <p class="text-[11px] text-slate-400 font-medium">Scan QRIS / Transfer untuk membayar</p>
+        <div>
+          <h3 class="font-extrabold text-slate-800 text-base">Pembayaran QRIS Otomatis</h3>
+          <p class="text-[11px] text-slate-400">Scan QR Code dan upload bukti transfer</p>
         </div>
         <button type="button" onclick="closeModal('modal-qris')" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg hover:bg-slate-100 transition">
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
       </div>
 
-      <!-- Detail Invoice Top Up -->
-      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 text-left space-y-1.5 text-xs">
-        <div class="flex justify-between items-center pb-2 border-b border-slate-200/60">
-          <span class="text-slate-400 text-[10px] font-bold">NO. INVOICE</span>
-          <span id="inv-no" class="font-bold text-pink-600 font-mono">INV-839201</span>
-        </div>
-        <div class="flex justify-between pt-1">
-          <span class="text-slate-500">Game:</span>
-          <span id="inv-game" class="font-bold text-slate-800">Mobile Legends</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="text-slate-500">ID Akun:</span>
-          <span id="inv-account" class="font-bold text-slate-800">12345678 (1234)</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="text-slate-500">Item Nominal:</span>
-          <span id="inv-item" class="font-bold text-slate-800">86 Diamonds</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="text-slate-500">No. WhatsApp:</span>
-          <span id="inv-phone" class="font-bold text-slate-800">081234567890</span>
-        </div>
+      <!-- Timer CountDown -->
+      <div class="bg-pink-50 border border-pink-100 rounded-2xl p-3 flex items-center justify-between">
+        <span class="text-xs font-bold text-pink-700">Sisa Waktu Pembayaran:</span>
+        <span id="qris-timer" class="text-xs font-black text-pink-600 bg-white px-2.5 py-1 rounded-xl shadow-xs">15:00</span>
       </div>
 
-      <!-- QR Code Image -->
-      <div class="space-y-2">
-        <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200/60 inline-block shadow-inner">
-          <img id="qris-image" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=JECIMARKET-PAYMENT" alt="QRIS Code" class="w-40 h-40 mx-auto rounded-xl shadow-sm border border-slate-200">
-        </div>
-
-        <div>
-          <p class="text-[11px] text-slate-400 font-medium">Total Pembayaran:</p>
-          <p id="qris-total-price" class="text-2xl font-black text-pink-600">Rp 20.000</p>
-        </div>
-
-        <div class="bg-amber-50 border border-amber-200 text-amber-800 text-[11px] p-2.5 rounded-xl font-medium">
-          ⏱ Selesaikan pembayaran dalam <span id="qris-timer" class="font-extrabold">05:00</span>
-        </div>
-      </div>
-
-      <!-- FITUR UPLOAD BUKTI PEMBAYARAN -->
-      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-left space-y-2">
-        <label class="block text-xs font-bold text-slate-700">Upload Bukti Transfer / Pembayaran</label>
-        
-        <div class="relative border-2 border-dashed border-slate-300 hover:border-pink-400 rounded-2xl p-3.5 text-center transition-all bg-white cursor-pointer">
-          <input type="file" id="proof-file" accept="image/*" onchange="previewProof(event)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-          
-          <div id="upload-placeholder" class="space-y-1">
-            <i class="fa-solid fa-cloud-arrow-up text-2xl text-slate-400 mb-1"></i>
-            <p class="text-[11px] font-bold text-slate-700">Klik untuk unggah gambar bukti</p>
-            <p class="text-[9px] text-slate-400 font-medium">PNG, JPG, JPEG (Maks. 5MB)</p>
+      <!-- QRIS Code Container -->
+      <div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-4 flex flex-col items-center justify-center text-center space-y-2">
+        <div class="w-48 h-48 bg-white p-3 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_QRIS.svg" alt="QRIS Logo" class="h-6 object-contain mb-2">
+          <!-- Placeholder QR Code Visual -->
+          <div class="w-28 h-28 bg-slate-900 rounded-lg flex items-center justify-center text-white text-[10px] font-bold p-2 text-center">
+            [ QRIS DREXXI STORE ]
           </div>
+        </div>
+        <p class="text-xs font-bold text-slate-700" id="qris-nominal-display">Rp 29.000</p>
+        <p class="text-[10px] text-slate-400">Scan dengan BCA, DANA, OVO, GoPay, ShopeePay, dll.</p>
+      </div>
 
-          <!-- Preview Bukti -->
-          <div id="upload-preview-box" class="hidden relative">
-            <img id="upload-preview-img" src="#" alt="Bukti Transfer" class="max-h-32 mx-auto rounded-xl border border-slate-200 shadow-sm object-contain">
-            <p class="text-[10px] text-emerald-600 font-bold mt-2">✓ Bukti pembayaran terlampir</p>
+      <!-- Upload Bukti Transfer -->
+      <div class="space-y-1.5">
+        <label class="block text-xs font-bold text-slate-700">Upload Bukti Transfer / Screenshot</label>
+        <div class="relative border-2 border-slate-200 border-dashed rounded-2xl p-3.5 text-center hover:border-pink-500 transition bg-slate-50/50 cursor-pointer">
+          <input type="file" id="qris-proof-file" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer" onchange="handleFileSelect(this)">
+          <div id="upload-instruction" class="space-y-1">
+            <i class="fa-solid fa-cloud-arrow-up text-pink-500 text-lg"></i>
+            <p class="text-xs font-semibold text-slate-600" id="file-name-display">Klik untuk pilih gambar bukti pembayaran</p>
+            <p class="text-[10px] text-slate-400">Format: JPG, PNG</p>
           </div>
         </div>
       </div>
 
-      <!-- Tombol Aksi -->
-      <div class="space-y-2 pt-1">
-        <button onclick="checkPaymentStatus()" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-extrabold py-3.5 rounded-2xl shadow-lg shadow-pink-500/20 text-sm transition-all active:scale-95">
-          Kirim Bukti & Konfirmasi
-        </button>
-        <button onclick="closeModal('modal-qris')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-2.5 rounded-xl text-xs transition-all">
-          Batal / Ubah Metode
-        </button>
-      </div>
-
+      <!-- Tombol Konfirmasi -->
+      <button type="button" onclick="confirmQrisPayment()" class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-black py-3.5 rounded-2xl shadow-lg shadow-pink-500/25 active:scale-95 transition-all text-sm flex items-center justify-center space-x-2">
+        <i class="fa-solid fa-paper-plane"></i>
+        <span>Kirim Bukti & Proses Pesanan</span>
+      </button>
     </div>
-  </div>
-
-  <!-- FLOATING TOAST NOTIFICATION -->
-  <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-10 opacity-0 pointer-events-none transition-all duration-300 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl border border-slate-800 flex items-center space-x-3 max-w-xs">
-    <div class="w-8 h-8 rounded-xl bg-pink-500 text-white flex items-center justify-center font-bold text-xs shrink-0">
-      <i class="fa-solid fa-bell"></i>
-    </div>
-    <p id="toast-message" class="text-xs font-semibold leading-snug">Notifikasi sistem</p>
   </div>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-slate-100 mt-12 py-6 text-center text-xs text-slate-500 font-medium">
-    <p>© 2026 <span class="font-extrabold text-pink-600">JECIMARKET</span>. All Rights Reserved.</p>
+  <footer class="bg-white border-t border-slate-100 mt-12 py-6 text-center text-slate-400 text-xs font-medium">
+    <div class="max-w-4xl mx-auto px-4 space-y-2">
+      <p class="font-bold text-slate-600">JECIMARKET &copy; 2026. All rights reserved.</p>
+      <p class="text-[11px] text-slate-400">Layanan Top Up Game Instant & Sewa Akun Sultan Terpercaya.</p>
+    </div>
   </footer>
 
-  <!-- JavaScript Logic -->
+  <!-- SCRIPT LOGIC -->
   <script>
-    let activeGame = 'ml';
-    
-    // UBAH NOMOR DI BAWAH INI DENGAN NOMOR WHATSAPP PRIBADI / ADMIN ANDA (Gunakan format 62...)
-    const ADMIN_WA_NUMBER = "6282260397943";
+    const state = {
+      currentGame: 'ml',
+      selectedItem: 'WDP',
+      selectedPrice: 29000,
+      selectedPayment: 'QRIS All Payment',
+      rentalAccount: 'Akun 1',
+      rentalPackage: '1 JAM',
+      rentalPrice: 15000
+    };
 
-    // --- MODAL UTILITY FUNCTIONS ---
+    const rentalPackages = {
+      'Akun 1': [
+        { label: '1 JAM', price: 15000 },
+        { label: '3 JAM', price: 35000 },
+        { label: '12 JAM', price: 80000 },
+        { label: '1 HARI', price: 130000 }
+      ],
+      'Akun 2': [
+        { label: '1 JAM', price: 10000 },
+        { label: '3 JAM', price: 25000 },
+        { label: '12 JAM', price: 60000 },
+        { label: '1 HARI', price: 100000 }
+      ]
+    };
+
+    function formatRupiah(number) {
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+    }
+
     function openModal(id) {
       const modal = document.getElementById(id);
-      if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
+      if (modal) modal.classList.add('active');
     }
 
     function closeModal(id) {
       const modal = document.getElementById(id);
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-      if (id === 'modal-qris') {
-        clearInterval(countdownInterval);
-      }
+      if (modal) modal.classList.remove('active');
     }
 
-    function handleBackdropClick(event, id) {
-      if (event.target.id === id) {
-        closeModal(id);
-      }
+    function handleBackdropClick(e, id) {
+      if (e.target.id === id) closeModal(id);
     }
 
-    // Close Modal on ESC key press
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        const activeModals = document.querySelectorAll('.modal-overlay.active');
-        activeModals.forEach(m => closeModal(m.id));
-      }
-    });
-
-    // --- TOAST NOTIFICATION ---
-    function showToast(message) {
-      const toast = document.getElementById('toast-notification');
-      const toastMessage = document.getElementById('toast-message');
-      toastMessage.textContent = message;
-
-      toast.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
-      toast.classList.add('translate-y-0', 'opacity-100');
-
-      setTimeout(() => {
-        toast.classList.remove('translate-y-0', 'opacity-100');
-        toast.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
-      }, 3500);
-    }
-
-    // --- SLIDER LOGIC ---
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-      dots.forEach((dot, i) => {
-        dot.style.opacity = i === index ? '1' : '0.4';
-      });
-      currentSlide = index;
-    }
-
-    function goToSlide(index) {
-      showSlide(index);
-    }
-
-    setInterval(() => {
-      let next = (currentSlide + 1) % slides.length;
-      showSlide(next);
-    }, 4000);
-
-    // --- NAVIGATION & FORM SWITCHING ---
     function resetToSelection() {
       document.getElementById('section-pilih-game').classList.remove('hidden');
       document.getElementById('section-form-topup').classList.add('hidden');
@@ -705,272 +826,97 @@
     }
 
     function openGameForm(game) {
-      activeGame = game;
+      state.currentGame = game;
       document.getElementById('section-pilih-game').classList.add('hidden');
-      document.getElementById('section-form-rental').classList.add('hidden');
       document.getElementById('section-form-topup').classList.remove('hidden');
+      document.getElementById('section-form-rental').classList.add('hidden');
 
-      const title = document.getElementById('active-game-title');
       const icon = document.getElementById('active-game-icon');
-      const summaryGame = document.getElementById('summary-game');
-
-      const formML = document.getElementById('form-input-ml');
-      const formFF = document.getElementById('form-input-ff');
-      const itemsML = document.getElementById('items-ml');
-      const itemsFF = document.getElementById('items-ff');
+      const title = document.getElementById('active-game-title');
+      const mlForm = document.getElementById('form-input-ml');
+      const ffForm = document.getElementById('form-input-ff');
+      const mlItems = document.getElementById('items-ml');
+      const ffItems = document.getElementById('items-ff');
 
       if (game === 'ml') {
-        title.textContent = 'Mobile Legends';
-        icon.textContent = 'ML';
-        summaryGame.textContent = 'Mobile Legends';
-        formML.classList.remove('hidden');
-        formFF.classList.add('hidden');
-        itemsML.classList.remove('hidden');
-        itemsFF.classList.add('hidden');
-        setItem('86 Diamonds', 20000, itemsML.children[0]);
-      } else if (game === 'ff') {
-        title.textContent = 'Free Fire';
-        icon.textContent = 'FF';
-        summaryGame.textContent = 'Free Fire';
-        formML.classList.add('hidden');
-        formFF.classList.remove('hidden');
-        itemsML.classList.add('hidden');
-        itemsFF.classList.remove('hidden');
-        setItem('50 Diamonds', 8000, itemsFF.children[0]);
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+        icon.innerText = 'ML';
+        icon.className = 'w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white font-black text-xl flex items-center justify-center shadow-md';
+        title.innerText = 'Mobile Legends';
+        mlForm.classList.remove('hidden');
+        ffForm.classList.add('hidden');
+        mlItems.classList.remove('hidden');
+        ffItems.classList.add('hidden');
+        
+        state.selectedItem = 'WDP';
+        state.selectedPrice = 29000;
+      } else {
+        icon.innerText = 'FF';
+        icon.className = 'w-14 h-14 rounded-2xl bg-gradient-to-tr from-orange-500 to-amber-500 text-white font-black text-xl flex items-center justify-center shadow-md';
+        title.innerText = 'Free Fire';
+        mlForm.classList.add('hidden');
+        ffForm.classList.remove('hidden');
+        mlItems.classList.add('hidden');
+        ffItems.classList.remove('hidden');
 
-    function setItem(name, price, element) {
-      document.getElementById('summary-item').textContent = name;
-      document.getElementById('summary-price').textContent = 'Rp ' + price.toLocaleString('id-ID');
-
-      const parent = element.parentElement;
-      const buttons = parent.querySelectorAll('.item-btn');
-      buttons.forEach(btn => {
-        btn.className = 'item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm';
-      });
-      element.className = 'item-btn p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left transition-all duration-200 shadow-sm';
-    }
-
-    let currentPaymentMethod = 'QRIS All Payment';
-
-    function setPayment(method, element) {
-      currentPaymentMethod = method;
-      document.getElementById('summary-payment').textContent = method;
-
-      const buttons = document.querySelectorAll('.pay-btn');
-      buttons.forEach(btn => {
-        btn.className = 'pay-btn p-3.5 rounded-2xl border border-slate-200 hover:border-pink-300 text-left flex items-center justify-between transition-all duration-200 hover:scale-[1.01]';
-      });
-      element.className = 'pay-btn p-3.5 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left flex items-center justify-between transition-all duration-200 shadow-sm hover:scale-[1.01]';
-    }
-
-    // --- PAYMENT PROCESS & QRIS INVOICE POPUP ---
-    let countdownInterval;
-
-    function processPayment() {
-      const phone = document.getElementById('topup-phone').value.trim();
-      let accountDetail = '';
-
-      if (activeGame === 'ml') {
-        const userId = document.getElementById('ml-user-id').value.trim();
-        const zoneId = document.getElementById('ml-zone-id').value.trim();
-        if (!userId || !zoneId) {
-          showToast('Harap isi User ID dan Zone ID Mobile Legends!');
-          return;
-        }
-        accountDetail = `${userId} (${zoneId})`;
-      } else if (activeGame === 'ff') {
-        const playerId = document.getElementById('ff-player-id').value.trim();
-        if (!playerId) {
-          showToast('Harap masukkan Player ID Free Fire!');
-          return;
-        }
-        accountDetail = playerId;
+        state.selectedItem = 'Member Mingguan';
+        state.selectedPrice = 27500;
       }
 
-      if (!phone) {
-        showToast('Harap masukkan Nomor WhatsApp Pelanggan!');
-        return;
-      }
-
-      const gameName = document.getElementById('summary-game').textContent;
-      const itemName = document.getElementById('summary-item').textContent;
-      const price = document.getElementById('summary-price').textContent;
-      const randomInvoice = 'INV-' + Math.floor(100000 + Math.random() * 900000);
-
-      document.getElementById('proof-file').value = '';
-      document.getElementById('upload-placeholder').classList.remove('hidden');
-      document.getElementById('upload-preview-box').classList.add('hidden');
-
-      document.getElementById('inv-no').textContent = randomInvoice;
-      document.getElementById('inv-game').textContent = gameName;
-      document.getElementById('inv-account').textContent = accountDetail;
-      document.getElementById('inv-item').textContent = itemName;
-      document.getElementById('inv-phone').textContent = phone;
-      document.getElementById('qris-total-price').textContent = price;
-
-      openModal('modal-qris');
-      startQRISTimer(300);
+      updateTopupSummary();
     }
-
-    function previewProof(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          document.getElementById('upload-preview-img').src = e.target.result;
-          document.getElementById('upload-placeholder').classList.add('hidden');
-          document.getElementById('upload-preview-box').classList.remove('hidden');
-        }
-        reader.readAsDataURL(file);
-      }
-    }
-
-    function startQRISTimer(durationInSeconds) {
-      clearInterval(countdownInterval);
-      let timer = durationInSeconds;
-      const timerDisplay = document.getElementById('qris-timer');
-
-      countdownInterval = setInterval(() => {
-        let minutes = Math.floor(timer / 60);
-        let seconds = timer % 60;
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        timerDisplay.textContent = `${minutes}:${seconds}`;
-
-        if (--timer < 0) {
-          clearInterval(countdownInterval);
-          showToast('Waktu pembayaran telah habis!');
-          closeModal('modal-qris');
-        }
-      }, 1000);
-    }
-
-    async function checkPaymentStatus() {
-      const fileInput = document.getElementById('proof-file');
-      if (!fileInput.files.length) {
-        showToast('Unggah foto bukti pembayaran terlebih dahulu!');
-        return;
-      }
-
-      const invNo = document.getElementById('inv-no').textContent;
-      const game = document.getElementById('inv-game').textContent;
-      const account = document.getElementById('inv-account').textContent;
-      const item = document.getElementById('inv-item').textContent;
-      const phone = document.getElementById('inv-phone').textContent;
-      const price = document.getElementById('qris-total-price').textContent;
-
-      showToast('Mengunggah bukti & menyiapkan WhatsApp...');
-
-      let proofUrl = "Gambar terlampir di WhatsApp";
-
-      // Opsional: Upload otomatis ke ImgBB (Dapatkan API Key gratis di https://api.imgbb.com/)
-      const IMGBB_API_KEY = "c3eb1e6d1ea9864cb3d973e815e26dbd"; // API Key ImgBB Anda
-      const file = fileInput.files[0];
-      const formData = new FormData();
-
-      try {
-        if (IMGBB_API_KEY && IMGBB_API_KEY !== "YOUR_IMGBB_API_KEY") {
-          const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
-            method: "POST",
-            body: formData
-          });
-          const result = await response.json();
-          if (result && result.data && result.data.url) {
-            proofUrl = result.data.url;
-          }
-        }
-      } catch (error) {
-        console.warn("Gagal upload otomatis ke cloud, menggunakan pengiriman standar:", error);
-      }
-
-      // Format pesan otomatis ke WhatsApp Admin
-      const message = `Halo Admin JECIMARKET, saya ingin konfirmasi pembayaran pesanan:\n\n` +
-        `📋 *DETAIL PESANAN TOP UP*\n` +
-        `• *No. Invoice:* ${invNo}\n` +
-        `• *Game:* ${game}\n` +
-        `• *ID / Data Akun:* ${account}\n` +
-        `• *Item / Nominal:* ${item}\n` +
-        `• *Metode Bayar:* ${currentPaymentMethod}\n` +
-        `• *Total Tagihan:* ${price}\n` +
-        `• *No. WhatsApp:* ${phone}\n` +
-        `• *Link Bukti Transfer:* ${proofUrl}\n\n` +
-        `Mohon segera diproses ya Min. Terima kasih!`;
-
-      const waUrl = `https://wa.me/${ADMIN_WA_NUMBER}?text=${encodeURIComponent(message)}`;
-
-      clearInterval(countdownInterval);
-      closeModal('modal-qris');
-
-      // Membuka tautan WhatsApp secara otomatis di tab baru
-      setTimeout(() => {
-        window.open(waUrl, '_blank');
-      }, 500);
-    }
-
-    function processRentalSubmit() {
-      const waPhone = document.getElementById('rental-phone').value.trim();
-      if (!waPhone) {
-        showToast('Harap masukkan nomor WhatsApp aktif terlebih dahulu!');
-        return;
-      }
-
-      const account = document.getElementById('rental-summary-account').textContent;
-      const pkg = document.getElementById('rental-summary-package').textContent;
-      const price = document.getElementById('rental-summary-price').textContent;
-
-      const message = `Halo Admin JECIMARKET, saya ingin sewa akun Free Fire:\n\n` +
-        `🎮 *DETAIL RENTAL AKUN FF*\n` +
-        `• *Pilihan Akun:* ${account}\n` +
-        `• *Durasi Sewa:* ${pkg}\n` +
-        `• *Total Biaya:* ${price}\n` +
-        `• *No. WA Penyewa:* ${waPhone}\n\n` +
-        `Mohon instruksi pembayaran & data akunnya ya Min. Terima kasih!`;
-
-      const waUrl = `https://wa.me/${+62822-6039-7943}?text=${encodeURIComponent(message)}`;
-      showToast('Mengarahkan ke WhatsApp Admin...');
-
-      setTimeout(() => {
-        window.open(waUrl, '_blank');
-      }, 600);
-    }
-
-    // --- RENTAL FF LOGIC ---
-    const rentalPackages = {
-      'Akun 1': [
-        { duration: '1 JAM', price: 15000 },
-        { duration: '3 JAM', price: 40000 },
-        { duration: '12 JAM', price: 120000 }
-      ],
-      'Akun 2': [
-        { duration: '1 JAM', price: 10000 },
-        { duration: '3 JAM', price: 28000 },
-        { duration: '12 JAM', price: 85000 }
-      ]
-    };
-
-    let selectedAccount = 'Akun 1';
 
     function openRentalForm() {
       document.getElementById('section-pilih-game').classList.add('hidden');
       document.getElementById('section-form-topup').classList.add('hidden');
       document.getElementById('section-form-rental').classList.remove('hidden');
+      
       switchRentalAccount('Akun 1');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function switchRentalAccount(accType) {
-      selectedAccount = accType;
-      document.getElementById('rental-summary-account').textContent = accType;
+    function setItem(item, price, element) {
+      state.selectedItem = item;
+      state.selectedPrice = price;
+
+      const parent = element.parentElement;
+      const buttons = parent.querySelectorAll('.item-btn');
+      buttons.forEach(btn => {
+        btn.className = 'item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm';
+        btn.querySelector('p:last-child').className = 'text-xs text-slate-500 font-semibold mt-1';
+      });
+
+      element.className = 'item-btn p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left transition-all duration-200 shadow-sm';
+      element.querySelector('p:last-child').className = 'text-xs text-pink-600 font-extrabold mt-1';
+
+      updateTopupSummary();
+    }
+
+    function setPayment(paymentName, element) {
+      state.selectedPayment = paymentName;
+
+      const buttons = document.querySelectorAll('.pay-btn');
+      buttons.forEach(btn => {
+        btn.className = 'pay-btn p-3.5 rounded-2xl border border-slate-200 hover:border-pink-300 text-left flex items-center justify-between transition-all duration-200 hover:scale-[1.01]';
+      });
+
+      element.className = 'pay-btn p-3.5 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left flex items-center justify-between transition-all duration-200 shadow-sm hover:scale-[1.01]';
+
+      updateTopupSummary();
+    }
+
+    function updateTopupSummary() {
+      document.getElementById('summary-game').innerText = state.currentGame === 'ml' ? 'Mobile Legends' : 'Free Fire';
+      document.getElementById('summary-item').innerText = state.selectedItem;
+      document.getElementById('summary-payment').innerText = state.selectedPayment;
+      document.getElementById('summary-price').innerText = formatRupiah(state.selectedPrice);
+    }
+
+    function switchRentalAccount(accName) {
+      state.rentalAccount = accName;
 
       const btn1 = document.getElementById('btn-akun-1');
       const btn2 = document.getElementById('btn-akun-2');
 
-      if (accType === 'Akun 1') {
+      if (accName === 'Akun 1') {
         btn1.className = 'p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-center font-bold text-slate-900 transition-all duration-200 shadow-sm hover:scale-[1.02]';
         btn2.className = 'p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-center font-bold text-slate-900 transition-all duration-200 hover:scale-[1.02]';
       } else {
@@ -978,52 +924,212 @@
         btn1.className = 'p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-center font-bold text-slate-900 transition-all duration-200 hover:scale-[1.02]';
       }
 
-      renderRentalPackages();
+      renderRentalPackages(accName);
     }
 
-    function renderRentalPackages() {
+    function renderRentalPackages(accName) {
       const grid = document.getElementById('rental-packages-grid');
       grid.innerHTML = '';
-      const pkgs = rentalPackages[selectedAccount];
 
-      pkgs.forEach((pkg, index) => {
+      const packages = rentalPackages[accName];
+      state.rentalPackage = packages[0].label;
+      state.rentalPrice = packages[0].price;
+
+      packages.forEach((pkg, index) => {
+        const isSelected = index === 0;
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = index === 0
-          ? 'rental-pkg-btn p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left transition-all duration-200 shadow-sm'
-          : 'rental-pkg-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm';
-
+        btn.onclick = () => setRentalPackage(pkg.label, pkg.price, btn);
+        btn.className = `rental-pkg-btn p-4 rounded-2xl text-left transition-all duration-200 ${
+          isSelected 
+            ? 'border-2 border-pink-500 bg-pink-50/50 shadow-sm' 
+            : 'border border-slate-200 hover:border-pink-300 hover:shadow-sm'
+        }`;
+        
         btn.innerHTML = `
-          <p class="font-bold text-slate-900 text-sm">${pkg.duration}</p>
-          <p class="text-xs ${index === 0 ? 'text-pink-600 font-extrabold' : 'text-slate-500 font-semibold'} mt-1">Rp ${pkg.price.toLocaleString('id-ID')}</p>
+          <p class="font-bold text-slate-900 text-sm">${pkg.label}</p>
+          <p class="${isSelected ? 'text-pink-600 font-extrabold' : 'text-slate-500 font-semibold'} text-xs mt-1">${formatRupiah(pkg.price)}</p>
         `;
-
-        btn.onclick = () => selectRentalPackage(pkg.duration, pkg.price, btn);
         grid.appendChild(btn);
       });
 
-      selectRentalPackage(pkgs[0].duration, pkgs[0].price, grid.children[0]);
+      updateRentalSummary();
     }
 
-    function selectRentalPackage(duration, price, element) {
-      document.getElementById('rental-summary-package').textContent = duration;
-      document.getElementById('rental-summary-price').textContent = 'Rp ' + price.toLocaleString('id-ID');
+    function setRentalPackage(pkgLabel, price, element) {
+      state.rentalPackage = pkgLabel;
+      state.rentalPrice = price;
 
       const buttons = document.querySelectorAll('.rental-pkg-btn');
       buttons.forEach(btn => {
         btn.className = 'rental-pkg-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm';
+        btn.querySelector('p:last-child').className = 'text-xs text-slate-500 font-semibold mt-1';
       });
+
       element.className = 'rental-pkg-btn p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left transition-all duration-200 shadow-sm';
+      element.querySelector('p:last-child').className = 'text-xs text-pink-600 font-extrabold mt-1';
+
+      updateRentalSummary();
     }
 
-    function searchTransaction() {
-      const query = document.getElementById('input-trx-id').value.trim();
-      if (!query) {
-        showToast('Masukkan Nomor Invoice / WhatsApp terlebih dahulu!');
+    function updateRentalSummary() {
+      document.getElementById('rental-summary-account').innerText = state.rentalAccount;
+      document.getElementById('rental-summary-package').innerText = state.rentalPackage;
+      document.getElementById('rental-summary-price').innerText = formatRupiah(state.rentalPrice);
+    }
+
+    let qrisTimerInterval;
+    function startQrisTimer(durationInSeconds) {
+      let timer = durationInSeconds;
+      const display = document.getElementById('qris-timer');
+      
+      clearInterval(qrisTimerInterval);
+      qrisTimerInterval = setInterval(() => {
+        let minutes = parseInt(timer / 60, 10);
+        let seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.innerText = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          clearInterval(qrisTimerInterval);
+          display.innerText = "Waktu Habis";
+        }
+      }, 1000);
+    }
+
+    function handleFileSelect(input) {
+      if (input.files && input.files[0]) {
+        const fileName = input.files[0].name;
+        document.getElementById('file-name-display').innerText = `File terpilih: ${fileName}`;
+      }
+    }
+
+    function processPayment() {
+      const phone = document.getElementById('topup-phone').value.trim();
+      let userId = '';
+
+      if (state.currentGame === 'ml') {
+        const uid = document.getElementById('ml-user-id').value.trim();
+        const zid = document.getElementById('ml-zone-id').value.trim();
+        if (!uid || !zid) {
+          alert('Harap isi User ID dan Zone ID Mobile Legends Anda!');
+          return;
+        }
+        userId = `${uid} (${zid})`;
+      } else {
+        const fid = document.getElementById('ff-player-id').value.trim();
+        if (!fid) {
+          alert('Harap isi Player ID Free Fire Anda!');
+          return;
+        }
+        userId = fid;
+      }
+
+      if (!phone) {
+        alert('Harap isi nomor WhatsApp Anda untuk konfirmasi!');
         return;
       }
-      document.getElementById('result-trx').classList.remove('hidden');
+
+      if (state.selectedPayment === 'QRIS All Payment') {
+        document.getElementById('qris-nominal-display').innerText = formatRupiah(state.selectedPrice);
+        openModal('modal-qris');
+        startQrisTimer(900);
+        return;
+      }
+
+      executeWhatsAppCheckout(userId, phone, 'Belum Upload (Metode Non-QRIS)');
     }
+
+    function confirmQrisPayment() {
+      const fileInput = document.getElementById('qris-proof-file');
+      if (!fileInput.files || fileInput.files.length === 0) {
+        alert('Harap upload bukti pembayaran / screenshot terlebih dahulu!');
+        return;
+      }
+
+      const phone = document.getElementById('topup-phone').value.trim();
+      let userId = '';
+      if (state.currentGame === 'ml') {
+        userId = `${document.getElementById('ml-user-id').value.trim()} (${document.getElementById('ml-zone-id').value.trim()})`;
+      } else {
+        userId = document.getElementById('ff-player-id').value.trim();
+      }
+
+      const fileName = fileInput.files[0].name;
+      closeModal('modal-qris');
+      executeWhatsAppCheckout(userId, phone, `Sudah Upload (${fileName})`);
+    }
+
+    function executeWhatsAppCheckout(userId, phone, proofStatus) {
+      const gameName = state.currentGame === 'ml' ? 'Mobile Legends' : 'Free Fire';
+      const text = `Halo Admin JECIMARKET, saya ingin melakukan Top Up:
+----------------------------------
+*Game:* ${gameName}
+*ID Akun:* ${userId}
+*Nominal:* ${state.selectedItem}
+*Pembayaran:* ${state.selectedPayment}
+*Total Tagihan:* ${formatRupiah(state.selectedPrice)}
+*Bukti Bayar:* ${proofStatus}
+*WhatsApp:* ${phone}
+----------------------------------
+Mohon diproses segera. Terima kasih!`;
+
+      window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function processRentalSubmit() {
+      const phone = document.getElementById('rental-phone').value.trim();
+      if (!phone) {
+        alert('Harap masukkan nomor WhatsApp aktif Anda!');
+        return;
+      }
+
+      const text = `Halo Admin JECIMARKET, saya ingin Sewa Akun FF:
+----------------------------------
+*Pilihan Akun:* ${state.rentalAccount}
+*Durasi Sewa:* ${state.rentalPackage}
+*Total Biaya:* ${formatRupiah(state.rentalPrice)}
+*Nomor WhatsApp:* ${phone}
+----------------------------------
+Mohon instruksi pembayaran dan data login akunnya. Terima kasih!`;
+
+      window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function checkInvoiceStatus() {
+      const input = document.getElementById('input-trx-id').value.trim();
+      const res = document.getElementById('trx-result');
+      
+      if (!input) {
+        alert('Masukkan Nomor Invoice atau Nomor WhatsApp Anda!');
+        return;
+      }
+
+      document.getElementById('trx-result-title').innerText = `Invoice / Nomor: ${input}`;
+      res.classList.remove('hidden');
+    }
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].className = 'dot w-2.5 h-2 rounded-full bg-white transition-all opacity-40 hover:opacity-75';
+
+      currentSlide = index;
+
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].className = 'dot w-7 h-2 rounded-full bg-white transition-all opacity-100 shadow-sm';
+    }
+
+    setInterval(() => {
+      let nextSlide = (currentSlide + 1) % slides.length;
+      goToSlide(nextSlide);
+    }, 5000);
   </script>
 </body>
 </html>
