@@ -1,1132 +1,1099 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JECIMARKET - Top Up & Rental Game</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Plus Jakarta Sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    .slide {
-      display: none;
-    }
-    .slide.active {
-      display: block;
-    }
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #f43f5e;
-      border-radius: 10px;
-    }
-    .modal-overlay {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
-    }
-    .modal-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    .modal-card {
-      transform: scale(0.92);
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .modal-overlay.active .modal-card {
-      transform: scale(1);
-    }
-    @keyframes marquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
-    }
-    .animate-marquee {
-      display: flex;
-      width: max-content;
-      animation: marquee 25s linear infinite;
-    }
-    .animate-marquee:hover {
-      animation-play-state: paused;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JECIMARKET - Top Up Game & Rental Akun FF</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f5ff',
+                            100: '#e0ebff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#ec4899',
+                            gold: '#f59e0b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-hover:hover {
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2);
+        }
+        .active-ring {
+            border-color: #6366f1 !important;
+            box-shadow: 0 0 0 2px #6366f1, 0 10px 20px -5px rgba(99, 102, 241, 0.4);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-pink-500 selection:text-white">
+<body class="min-h-screen flex flex-col justify-between text-slate-100 antialiased selection:bg-brand-500 selection:text-white pb-16">
 
-  <!-- Header / Navbar -->
-  <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-slate-100 shadow-sm">
-    <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between">
-      <div class="flex items-center space-x-2.5 cursor-pointer" onclick="resetToSelection()">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-600 via-rose-500 to-amber-400 flex items-center justify-center text-white font-black text-lg shadow-lg shadow-pink-500/30 transform hover:rotate-3 transition-transform">
-          JM
+    <!-- TOP NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800/80 px-4 lg:px-8 py-3.5">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="showCatalogSection()">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-purple-600 to-pink-500 flex items-center justify-center font-black text-xl text-white shadow-lg shadow-brand-500/30">
+                    J
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-brand-500 bg-clip-text text-transparent">
+                        JECIMARKET
+                    </h1>
+                    <p class="text-[10px] text-brand-500 font-semibold uppercase tracking-wider">Top Up & Rental Store</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="showCatalogSection()" class="hidden md:flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-1.5 rounded-xl text-xs font-medium transition">
+                    <i class="fa-solid fa-gamepad text-brand-500"></i> Katalog Topup
+                </button>
+                <div class="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-3 py-1 rounded-full text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Sistem Otomatis 24/7</span>
+                </div>
+            </div>
         </div>
-        <div>
-          <span class="font-black text-xl tracking-tight bg-gradient-to-r from-pink-600 to-rose-500 bg-clip-text text-transparent block leading-none">
-            JECIMARKET
-          </span>
-          <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase">Topup & Rental</span>
-        </div>
-      </div>
+    </header>
 
-      <div class="flex items-center space-x-2">
-        <button onclick="openModal('modal-cek')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-700 font-bold text-xs transition-all flex items-center space-x-1.5 active:scale-95">
-          <i class="fa-solid fa-magnifying-glass text-slate-500"></i>
-          <span class="hidden sm:inline">Cek Pesanan</span>
-        </button>
-        <button onclick="openModal('modal-cs')" class="px-3.5 py-2 rounded-xl bg-pink-50 hover:bg-pink-100 text-pink-600 font-bold text-xs transition-all flex items-center space-x-1.5 border border-pink-200/60 active:scale-95 shadow-sm">
-          <i class="fa-solid fa-headset text-pink-500"></i>
-          <span>CS Bantuan</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Container -->
-  <main class="max-w-4xl mx-auto px-4 py-6 w-full flex-grow space-y-8">
-
-    <!-- Promo Banner Slider -->
-    <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-pink-500/10 bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 text-white p-6 md:p-8">
-      <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
-      
-      <div class="slide active transition-all duration-500">
-        <span class="inline-flex items-center space-x-1 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-extrabold tracking-wider uppercase mb-3 text-white border border-white/20">
-          🔥 Promo Spesial Hari Ini
-        </span>
-        <h2 class="text-2xl md:text-3xl font-black mb-2 leading-tight">Top Up MLBB & FF Murah</h2>
-        <p class="text-pink-100 text-xs md:text-sm max-w-md font-medium">Dapatkan bonus diamond melimpah dan proses sistem otomatis dalam hitungan detik!</p>
-      </div>
-      
-      <div class="slide transition-all duration-500">
-        <span class="inline-flex items-center space-x-1 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-extrabold tracking-wider uppercase mb-3 text-white border border-white/20">
-          🎮 Sewa Akun Sultan
-        </span>
-        <h2 class="text-2xl md:text-3xl font-black mb-2 leading-tight">Rental Akun Free Fire VIP</h2>
-        <p class="text-pink-100 text-xs md:text-sm max-w-md font-medium">Banyak pilihan skin SG2 langka dan bundle impian, sewa per jam hemat banget!</p>
-      </div>
-
-      <!-- Dots Indicator -->
-      <div class="flex space-x-2 mt-6 relative z-10">
-        <button onclick="goToSlide(0)" class="dot w-7 h-2 rounded-full bg-white transition-all opacity-100 shadow-sm"></button>
-        <button onclick="goToSlide(1)" class="dot w-2.5 h-2 rounded-full bg-white transition-all opacity-40 hover:opacity-75"></button>
-      </div>
-    </div>
-
-    <!-- SECTION: ANIMASI TESTIMONI & KEPUASAN PELANGGAN -->
-    <section class="space-y-3 overflow-hidden">
-      <div class="flex items-center justify-between px-1">
-        <h3 class="text-sm font-black text-slate-800 flex items-center space-x-2">
-          <span class="w-2.5 h-5 bg-pink-500 rounded-full block"></span>
-          <span>Testimoni & Kepuasan Pelanggan</span>
-        </h3>
-        <span class="text-[10px] font-extrabold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100 flex items-center space-x-1">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>100% Terpercaya</span>
-        </span>
-      </div>
-
-      <!-- Auto Scrolling Marquee -->
-      <div class="relative w-full overflow-hidden py-1">
-        <div class="animate-marquee flex space-x-4">
-          <!-- Item Set 1 -->
-          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
-            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
-              <i class="fa-solid fa-user-check"></i>
-            </div>
-            <div class="text-xs overflow-hidden">
-              <div class="flex items-center space-x-1.5">
-                <span class="font-extrabold text-slate-800 truncate">Rizky (Bandung)</span>
-                <span class="text-amber-400 text-[10px]">★★★★★</span>
-              </div>
-              <p class="text-slate-500 truncate text-[11px] mt-0.5">"Top up 702 Diamond MLBB masuk 2 detik, mantap!"</p>
-            </div>
-          </div>
-
-          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
-            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
-              <i class="fa-solid fa-gamepad"></i>
-            </div>
-            <div class="text-xs overflow-hidden">
-              <div class="flex items-center space-x-1.5">
-                <span class="font-extrabold text-slate-800 truncate">Dimas (Jakarta)</span>
-                <span class="text-amber-400 text-[10px]">★★★★★</span>
-              </div>
-              <p class="text-slate-500 truncate text-[11px] mt-0.5">"Sewa Akun 1 SG2 ungu gacor parah, amanah!"</p>
-            </div>
-          </div>
-
-          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
-            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
-              <i class="fa-solid fa-shield-halved"></i>
-            </div>
-            <div class="text-xs overflow-hidden">
-              <div class="flex items-center space-x-1.5">
-                <span class="font-extrabold text-slate-800 truncate">Putri (Surabaya)</span>
-                <span class="text-amber-400 text-[10px]">★★★★★</span>
-              </div>
-              <p class="text-slate-500 truncate text-[11px] mt-0.5">"QRIS otomatis scan langsung beres, cepet banget."</p>
-            </div>
-          </div>
-
-          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
-            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
-              <i class="fa-solid fa-bolt"></i>
-            </div>
-            <div class="text-xs overflow-hidden">
-              <div class="flex items-center space-x-1.5">
-                <span class="font-extrabold text-slate-800 truncate">Fajar (Medan)</span>
-                <span class="text-amber-400 text-[10px]">★★★★★</span>
-              </div>
-              <p class="text-slate-500 truncate text-[11px] mt-0.5">"Member mingguan FF langsung masuk akun. Recomended!"</p>
-            </div>
-          </div>
-
-          <!-- Duplicate Set for Seamless Loop -->
-          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
-            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
-              <i class="fa-solid fa-user-check"></i>
-            </div>
-            <div class="text-xs overflow-hidden">
-              <div class="flex items-center space-x-1.5">
-                <span class="font-extrabold text-slate-800 truncate">Rizky (Bandung)</span>
-                <span class="text-amber-400 text-[10px]">★★★★★</span>
-              </div>
-              <p class="text-slate-500 truncate text-[11px] mt-0.5">"Top up 702 Diamond MLBB masuk 2 detik, mantap!"</p>
-            </div>
-          </div>
-
-          <div class="inline-flex items-center space-x-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm min-w-[280px]">
-            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-bold flex items-center justify-center text-sm shrink-0 border border-pink-100">
-              <i class="fa-solid fa-gamepad"></i>
-            </div>
-            <div class="text-xs overflow-hidden">
-              <div class="flex items-center space-x-1.5">
-                <span class="font-extrabold text-slate-800 truncate">Dimas (Jakarta)</span>
-                <span class="text-amber-400 text-[10px]">★★★★★</span>
-              </div>
-              <p class="text-slate-500 truncate text-[11px] mt-0.5">"Sewa Akun 1 SG2 ungu gacor parah, amanah!"</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 1: PILIH LAYANAN -->
-    <section id="section-pilih-game" class="space-y-4">
-      <div class="flex items-center justify-between">
-        <h3 class="text-lg font-black text-slate-800 flex items-center space-x-2">
-          <span class="w-2.5 h-6 bg-pink-500 rounded-full block"></span>
-          <span>Pilih Layanan Favorit</span>
-        </h3>
-        <span class="text-xs font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-lg border border-pink-100">Buka 24 Jam</span>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <!-- Mobile Legends -->
-        <div onclick="openGameForm('ml')" class="group relative bg-white p-5 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-pink-500/10 hover:border-pink-300 transition-all duration-300 cursor-pointer flex flex-col items-center text-center transform hover:-translate-y-1">
-          <span class="absolute top-3 right-3 px-2 py-0.5 bg-rose-500 text-white font-extrabold text-[9px] rounded-full uppercase tracking-wider shadow-sm">HOT</span>
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white font-black text-2xl flex items-center justify-center shadow-lg shadow-blue-500/20 mb-3 group-hover:scale-110 transition-transform">
-            ML
-          </div>
-          <h4 class="font-extrabold text-slate-800 text-sm">Mobile Legends</h4>
-          <p class="text-[11px] text-slate-400 mt-0.5 font-medium">Top Up Diamonds</p>
-        </div>
-
-        <!-- Free Fire -->
-        <div onclick="openGameForm('ff')" class="group relative bg-white p-5 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-pink-500/10 hover:border-pink-300 transition-all duration-300 cursor-pointer flex flex-col items-center text-center transform hover:-translate-y-1">
-          <span class="absolute top-3 right-3 px-2 py-0.5 bg-amber-500 text-white font-extrabold text-[9px] rounded-full uppercase tracking-wider shadow-sm">PROMO</span>
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-orange-500 to-amber-500 text-white font-black text-2xl flex items-center justify-center shadow-lg shadow-orange-500/20 mb-3 group-hover:scale-110 transition-transform">
-            FF
-          </div>
-          <h4 class="font-extrabold text-slate-800 text-sm">Free Fire</h4>
-          <p class="text-[11px] text-slate-400 mt-0.5 font-medium">Top Up Diamonds</p>
-        </div>
-
-        <!-- Rental Akun FF -->
-        <div onclick="openRentalForm()" class="group relative bg-white p-5 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-pink-500/10 hover:border-pink-300 transition-all duration-300 cursor-pointer flex flex-col items-center text-center col-span-2 md:col-span-1 transform hover:-translate-y-1">
-          <span class="absolute top-3 right-3 px-2 py-0.5 bg-emerald-500 text-white font-extrabold text-[9px] rounded-full uppercase tracking-wider shadow-sm">READY</span>
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-600 text-white font-black text-2xl flex items-center justify-center shadow-lg shadow-pink-500/20 mb-3 group-hover:scale-110 transition-transform">
-            RENT
-          </div>
-          <h4 class="font-extrabold text-slate-800 text-sm">Rental Akun FF</h4>
-          <p class="text-[11px] text-pink-600 font-bold mt-0.5">Sewa Spec Sultan</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: FORM TOP UP -->
-    <section id="section-form-topup" class="hidden space-y-6">
-      <button onclick="resetToSelection()" class="inline-flex items-center space-x-2 text-xs font-bold text-pink-600 hover:text-pink-700 bg-pink-50 hover:bg-pink-100/80 px-4 py-2 rounded-xl border border-pink-100 transition-all">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span>Kembali Pilih Layanan</span>
-      </button>
-
-      <div class="bg-white p-5 rounded-3xl border border-slate-100 shadow-sm flex items-center space-x-4">
-        <div id="active-game-icon" class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-600 text-white font-black text-xl flex items-center justify-center shadow-md">
-          ML
-        </div>
-        <div>
-          <h3 id="active-game-title" class="text-lg font-black text-slate-800">Mobile Legends</h3>
-          <p class="text-xs font-semibold text-emerald-600 flex items-center space-x-1 mt-0.5">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Sistem Otomatis 1-3 Detik</span>
-          </p>
-        </div>
-      </div>
-
-      <!-- Step 1: Input Data Akun -->
-      <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
-        <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
-          <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">1</span>
-          <span>Masukkan Data Akun</span>
-        </h4>
-        <div id="form-input-ml" class="grid grid-cols-2 gap-3">
-          <input type="text" id="ml-user-id" placeholder="User ID (cth: 12345678)" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium transition-all bg-slate-50/50 focus:bg-white">
-          <input type="text" id="ml-zone-id" placeholder="Zone ID (cth: 1234)" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium transition-all bg-slate-50/50 focus:bg-white">
-        </div>
-        <div id="form-input-ff" class="hidden">
-          <input type="text" id="ff-player-id" placeholder="Masukkan Player ID Free Fire" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium transition-all bg-slate-50/50 focus:bg-white">
-        </div>
-      </div>
-
-      <!-- Step 2: Pilih Nominal Item -->
-      <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
-        <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
-          <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">2</span>
-          <span>Pilih Nominal Item</span>
-        </h4>
+    <main class="max-w-6xl mx-auto w-full px-4 sm:px-6 my-6 flex-grow">
         
-        <!-- Mobile Legends Items -->
-        <div id="items-ml" class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <button onclick="setItem('WDP', 29000, this)" class="item-btn p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left transition-all duration-200 shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">WDP</p>
-            <p class="text-xs text-pink-600 font-extrabold mt-1">Rp 29.000</p>
-          </button>
-          <button onclick="setItem('50 Diamond', 13000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">50 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 13.000</p>
-          </button>
-          <button onclick="setItem('100 Diamond', 26500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">100 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 26.500</p>
-          </button>
-          <button onclick="setItem('150 Diamond', 40500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">150 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 40.500</p>
-          </button>
-          <button onclick="setItem('250 Diamond', 66000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">250 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 66.000</p>
-          </button>
-          <button onclick="setItem('300 Diamond', 79500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">300 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 79.500</p>
-          </button>
-          <button onclick="setItem('355 Diamond', 92000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">355 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 92.000</p>
-          </button>
-          <button onclick="setItem('406 Diamond', 106500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">406 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 106.500</p>
-          </button>
-          <button onclick="setItem('500 Diamond', 131000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">500 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 131.000</p>
-          </button>
-          <button onclick="setItem('600 Diamond', 154500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">600 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 154.500</p>
-          </button>
-          <button onclick="setItem('702 Diamond', 181000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">702 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 181.000</p>
-          </button>
-          <button onclick="setItem('841 Diamond', 219500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">841 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 219.500</p>
-          </button>
-          <button onclick="setItem('963 Diamond', 243000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">963 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 243.000</p>
-          </button>
-          <button onclick="setItem('1050 Diamond', 267500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">1050 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 267.500</p>
-          </button>
-          <button onclick="setItem('1412 Diamond', 367500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">1412 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 367.500</p>
-          </button>
-          <button onclick="setItem('2010 Diamond', 495500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">2010 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 495.500</p>
-          </button>
-          <button onclick="setItem('4020 Diamond', 1010000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">4020 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 1.010.000</p>
-          </button>
-        </div>
-
-        <!-- Free Fire Items -->
-        <div id="items-ff" class="hidden grid grid-cols-2 md:grid-cols-3 gap-3">
-          <button onclick="setItem('Member Mingguan', 27500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">Member Mingguan</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 27.500</p>
-          </button>
-          <button onclick="setItem('Member Bulanan', 81000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">Member Bulanan</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 81.000</p>
-          </button>
-          <button onclick="setItem('50 Diamond', 7000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">50 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 7.000</p>
-          </button>
-          <button onclick="setItem('70 Diamond', 9500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">70 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 9.500</p>
-          </button>
-          <button onclick="setItem('100 Diamond', 13000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">100 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 13.000</p>
-          </button>
-          <button onclick="setItem('140 Diamond', 17500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">140 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 17.500</p>
-          </button>
-          <button onclick="setItem('200 Diamond', 25500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">200 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 25.500</p>
-          </button>
-          <button onclick="setItem('250 Diamond', 31500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">250 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 31.500</p>
-          </button>
-          <button onclick="setItem('300 Diamond', 38000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">300 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 38.000</p>
-          </button>
-          <button onclick="setItem('355 Diamond', 44500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">355 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 44.500</p>
-          </button>
-          <button onclick="setItem('425 Diamond', 54000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">425 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 54.000</p>
-          </button>
-          <button onclick="setItem('500 Diamond', 63000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">500 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 63.000</p>
-          </button>
-          <button onclick="setItem('565 Diamond', 71500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">565 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 71.500</p>
-          </button>
-          <button onclick="setItem('600 Diamond', 76000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">600 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 76.000</p>
-          </button>
-          <button onclick="setItem('720 Diamond', 89000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">720 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 89.000</p>
-          </button>
-          <button onclick="setItem('860 Diamond', 105500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">860 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 105.500</p>
-          </button>
-          <button onclick="setItem('930 Diamond', 115000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">930 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 115.000</p>
-          </button>
-          <button onclick="setItem('1000 Diamond', 123500, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">1000 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 123.500</p>
-          </button>
-          <button onclick="setItem('1450 Diamond', 177000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">1450 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 177.000</p>
-          </button>
-          <button onclick="setItem('2000 Diamond', 250000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">2000 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 250.000</p>
-          </button>
-          <button onclick="setItem('3000 Diamond', 370000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">3000 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 370.000</p>
-          </button>
-          <button onclick="setItem('4000 Diamond', 496000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">4000 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 496.000</p>
-          </button>
-          <button onclick="setItem('7290 Diamond', 1058000, this)" class="item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm">
-            <p class="font-bold text-slate-900 text-sm">7290 Diamond</p>
-            <p class="text-xs text-slate-500 font-semibold mt-1">Rp 1.058.000</p>
-          </button>
-        </div>
-      </div>
-
-      <!-- Step 3: Nomor WhatsApp Pelanggan -->
-      <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-3">
-        <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
-          <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">3</span>
-          <span>Nomor WhatsApp Pelanggan</span>
-        </h4>
-        <input type="text" id="topup-phone" placeholder="Contoh: 081234567890" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium transition-all bg-slate-50/50 focus:bg-white">
-        <p class="text-[11px] text-slate-400 font-medium">*Bukti pembayaran & status pengiriman akan dikirimkan ke WhatsApp ini.</p>
-      </div>
-
-      <!-- Step 4: Metode Pembayaran -->
-      <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
-        <div class="flex items-center justify-between">
-          <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
-            <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">4</span>
-            <span>Pilih Metode Pembayaran</span>
-          </h4>
-          <span class="text-[11px] text-slate-400 font-medium">Bebas Biaya Admin</span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          
-          <!-- Option 1: QRIS -->
-          <button onclick="setPayment('QRIS All Payment', this)" class="pay-btn p-3.5 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left flex items-center justify-between transition-all duration-200 shadow-sm hover:scale-[1.01]">
-            <div class="flex items-center space-x-3">
-              <div class="w-12 h-8 bg-white rounded-lg border border-slate-100 p-1 flex items-center justify-center shadow-2xs">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_QRIS.svg" alt="QRIS" class="max-h-full object-contain">
-              </div>
-              <div>
-                <span class="font-bold text-xs text-slate-800 block">QRIS All Payment</span>
-                <span class="text-[10px] text-slate-400 block">Scan Otomatis (Semua e-Wallet)</span>
-              </div>
+        <!-- PROMO BANNER CAROUSEL -->
+        <section class="mb-8 relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 shadow-2xl p-6 md:p-8">
+            <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-3 text-center md:text-left max-w-xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/20 border border-brand-500/40 text-brand-400 text-xs font-bold">
+                        <i class="fa-solid fa-fire text-amber-400"></i> PROMO SPESIAL HARI INI
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white leading-tight">
+                        Diskon Topup & Sewa Akun FF Paling Murah!
+                    </h2>
+                    <p class="text-sm text-slate-300">
+                        Gunakan Kode Promo <span class="bg-brand-500/30 text-brand-400 px-2 py-0.5 rounded font-mono font-bold border border-brand-500/50">JECICENTIL</span> saat checkout untuk potongan harga ekstra!
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                    <button onclick="scrollToRental()" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-bold px-5 py-3 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-pink-600/30 transition transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-key"></i> Sewa Akun FF
+                    </button>
+                    <button onclick="showCatalogSection()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold px-5 py-3 rounded-2xl text-xs flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-gem text-amber-400"></i> Top Up Diamond
+                    </button>
+                </div>
             </div>
-            <span class="text-[9px] font-extrabold text-emerald-600 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-md uppercase">Otomatis</span>
-          </button>
+        </section>
 
-          <!-- Option 2: DANA -->
-          <button onclick="setPayment('DANA', this)" class="pay-btn p-3.5 rounded-2xl border border-slate-200 hover:border-pink-300 text-left flex items-center justify-between transition-all duration-200 hover:scale-[1.01]">
-            <div class="flex items-center space-x-3">
-              <div class="w-12 h-8 bg-white rounded-lg border border-slate-100 p-1 flex items-center justify-center shadow-2xs">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA" class="max-h-full object-contain">
-              </div>
-              <div>
-                <span class="font-bold text-xs text-slate-800 block">DANA</span>
-                <span class="text-[10px] text-slate-400 block">Transfer / Scan DANA</span>
-              </div>
+        <!-- RENTAL AKUN FREE FIRE SECTION -->
+        <section id="rental-section" class="mb-10">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-xl font-black text-white flex items-center gap-2">
+                        <i class="fa-solid fa-crown text-amber-400"></i> Rental Akun Free Fire
+                    </h2>
+                    <p class="text-xs text-slate-400">Sewa akun Sultan FF full vault & weapon, bayar langsung via QRIS/VA</p>
+                </div>
+                <span class="text-xs bg-amber-500/10 text-amber-400 font-semibold px-2.5 py-1 rounded-lg border border-amber-500/20">
+                    Ready Stock
+                </span>
             </div>
-            <span class="text-[9px] font-extrabold text-emerald-600 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-md uppercase">Otomatis</span>
-          </button>
 
-          <!-- Option 3: GoPay -->
-          <button onclick="setPayment('GoPay', this)" class="pay-btn p-3.5 rounded-2xl border border-slate-200 hover:border-pink-300 text-left flex items-center justify-between transition-all duration-200 hover:scale-[1.01]">
-            <div class="flex items-center space-x-3">
-              <div class="w-12 h-8 bg-white rounded-lg border border-slate-100 p-1 flex items-center justify-center shadow-2xs">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg" alt="GoPay" class="max-h-full object-contain">
-              </div>
-              <div>
-                <span class="font-bold text-xs text-slate-800 block">GoPay</span>
-                <span class="text-[10px] text-slate-400 block">Saldo GoPay & GoPay Later</span>
-              </div>
+            <!-- RENTAL CARDS GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- CARD ACCOUNT 1 -->
+                <div onclick="openRentalModal('acc1')" class="glass-card glass-card-hover rounded-2xl p-5 cursor-pointer relative group transition duration-300">
+                    <div class="absolute top-4 right-4 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-md">
+                        Sultan Vault
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-3xl group-hover:scale-105 transition">
+                            🔥
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-lg text-white group-hover:text-brand-400 transition">Account 1</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Sultan Full Bundle, Incu SG2, Old Vault</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="text-xs text-slate-500 line-through">Rp 35.000</span>
+                                <span class="text-sm font-black text-emerald-400">Rp 15.000 <span class="text-[10px] text-slate-400 font-normal">/ jam</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-300">
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock text-brand-500"></i> Opsi Jam & Paket Hari</span>
+                        <span class="text-brand-400 font-bold group-hover:translate-x-1 transition flex items-center gap-1">
+                            Pilih Paket <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- CARD ACCOUNT 2 -->
+                <div onclick="openRentalModal('acc2')" class="glass-card glass-card-hover rounded-2xl p-5 cursor-pointer relative group transition duration-300">
+                    <div class="absolute top-4 right-4 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-black text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-md">
+                        Pro Old Season
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-3xl group-hover:scale-105 transition">
+                            ⚡
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-lg text-white group-hover:text-purple-400 transition">Account 2</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Akun Old Season 2, Full EVO Weapon Max</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="text-xs text-slate-500 line-through">Rp 35.000</span>
+                                <span class="text-sm font-black text-emerald-400">Rp 15.000 <span class="text-[10px] text-slate-400 font-normal">/ jam</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-300">
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock text-purple-400"></i> Opsi Jam & Paket Hari</span>
+                        <span class="text-purple-400 font-bold group-hover:translate-x-1 transition flex items-center gap-1">
+                            Pilih Paket <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <span class="text-[9px] font-extrabold text-emerald-600 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-md uppercase">Otomatis</span>
-          </button>
+        </section>
 
-          <!-- Option 4: ShopeePay -->
-          <button onclick="setPayment('ShopeePay', this)" class="pay-btn p-3.5 rounded-2xl border border-slate-200 hover:border-pink-300 text-left flex items-center justify-between transition-all duration-200 hover:scale-[1.01]">
-            <div class="flex items-center space-x-3">
-              <div class="w-12 h-8 bg-white rounded-lg border border-slate-100 p-1 flex items-center justify-center shadow-2xs">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/ShopeePay_logo.svg" alt="ShopeePay" class="max-h-full object-contain">
-              </div>
-              <div>
-                <span class="font-bold text-xs text-slate-800 block">ShopeePay</span>
-                <span class="text-[10px] text-slate-400 block">Saldo ShopeePay</span>
-              </div>
+        <!-- VIEW 1: GAME CATALOG SECTION -->
+        <section id="game-catalog-section" class="transition-all duration-300">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-xl font-black text-white flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad text-brand-500"></i> Pilih Game Top Up
+                    </h2>
+                    <p class="text-xs text-slate-400">Pilih game favoritmu untuk melanjutkan ke pengisian data</p>
+                </div>
             </div>
-            <span class="text-[9px] font-extrabold text-emerald-600 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-md uppercase">Otomatis</span>
-          </button>
 
-          <!-- Option 5: Transfer Bank BCA -->
-          <button onclick="setPayment('Transfer Bank BCA', this)" class="pay-btn p-3.5 rounded-2xl border border-slate-200 hover:border-pink-300 text-left flex items-center justify-between transition-all duration-200 hover:scale-[1.01]">
-            <div class="flex items-center space-x-3">
-              <div class="w-12 h-8 bg-white rounded-lg border border-slate-100 p-1 flex items-center justify-center shadow-2xs">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA" class="max-h-full object-contain">
-              </div>
-              <div>
-                <span class="font-bold text-xs text-slate-800 block">Bank BCA</span>
-                <span class="text-[10px] text-slate-400 block">Transfer Bank Manual / m-BCA</span>
-              </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Mobile Legends -->
+                <div id="catalog-card-ml" onclick="selectGameCatalog('ml')" class="game-card glass-card glass-card-hover rounded-2xl p-4 cursor-pointer relative group transition flex flex-col items-center text-center">
+                    <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden mb-3 border-2 border-slate-700 group-hover:border-brand-500 transition shadow-lg">
+                        <img src="https://i.gyazo.com/a4897b96f0204ace2ee28c3dced5dff0.jpg" alt="Mobile Legends" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    </div>
+                    <h3 class="font-extrabold text-sm sm:text-base text-white">Mobile Legends</h3>
+                    <p class="text-[11px] text-slate-400 mt-1">Moonton ID / User ID</p>
+                    <span class="mt-3 text-[10px] font-bold bg-brand-500/10 text-brand-400 px-2.5 py-1 rounded-full border border-brand-500/20">
+                        Fast Process
+                    </span>
+                </div>
+
+                <!-- Free Fire -->
+                <div id="catalog-card-ff" onclick="selectGameCatalog('ff')" class="game-card glass-card glass-card-hover rounded-2xl p-4 cursor-pointer relative group transition flex flex-col items-center text-center">
+                    <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden mb-3 border-2 border-slate-700 group-hover:border-brand-500 transition shadow-lg">
+                        <img src="https://i.gyazo.com/f74fecf79e4720746b73cc5c858cfc7a.png" alt="Free Fire" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    </div>
+                    <h3 class="font-extrabold text-sm sm:text-base text-white">Free Fire</h3>
+                    <p class="text-[11px] text-slate-400 mt-1">Garena Player ID</p>
+                    <span class="mt-3 text-[10px] font-bold bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-full border border-amber-500/20">
+                        Instant 24 Jam
+                    </span>
+                </div>
+
+                <!-- Roblox (Stok Habis) -->
+                <div id="catalog-card-roblox" onclick="selectGameCatalog('roblox')" class="game-card glass-card rounded-2xl p-4 cursor-not-allowed relative group opacity-60 flex flex-col items-center text-center border-slate-800">
+                    <div class="absolute top-2 right-2 bg-rose-600/90 text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow">
+                        Stok Habis
+                    </div>
+                    <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden mb-3 border-2 border-slate-800 grayscale">
+                        <img src="https://i.gyazo.com/33773a7287a35a30259685512c0b490e.png" alt="Roblox" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-extrabold text-sm sm:text-base text-slate-400">Roblox</h3>
+                    <p class="text-[11px] text-slate-500 mt-1">Roblox Username</p>
+                    <span class="mt-3 text-[10px] font-bold bg-rose-500/10 text-rose-400 px-2.5 py-1 rounded-full border border-rose-500/20">
+                        Tidak Tersedia
+                    </span>
+                </div>
             </div>
-            <span class="text-[9px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md uppercase">Manual</span>
-          </button>
+        </section>
 
+        <!-- VIEW 2: TOP UP DATA & FORM SECTION (Hidden until game selected) -->
+        <section id="form-section" class="hidden transition-all duration-300">
+            <!-- Back to catalog button -->
+            <button onclick="showCatalogSection()" class="mb-5 inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition border border-slate-700">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Katalog Game
+            </button>
+
+            <!-- Active Selected Game Header -->
+            <div class="glass-card rounded-2xl p-4 sm:p-5 mb-6 flex items-center justify-between border-brand-500/30">
+                <div class="flex items-center gap-4">
+                    <img id="active-game-logo" src="" alt="Game Logo" class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover border-2 border-brand-500 shadow-md">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h2 id="active-game-title" class="text-lg sm:text-xl font-black text-white">Title</h2>
+                            <span id="active-game-tag" class="text-[10px] bg-brand-500/20 text-brand-400 px-2 py-0.5 rounded-md font-bold uppercase"></span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-0.5">Lengkapi data akun dan pilih nominal untuk checkout.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- LEFT FORM COLUMN (2 Cols) -->
+                <div class="lg:col-span-2 space-y-6">
+                    
+                    <!-- STEP 1: USER DATA -->
+                    <div class="glass-card rounded-2xl p-5 sm:p-6">
+                        <div class="flex items-center gap-3 mb-4 border-b border-slate-800 pb-3">
+                            <span class="w-7 h-7 rounded-full bg-brand-600 text-white flex items-center justify-center font-black text-xs">1</span>
+                            <h3 class="font-bold text-white text-base">Masukkan Data Akun</h3>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label id="label-userid" class="block text-xs font-semibold text-slate-300 mb-1">User ID</label>
+                                <input type="text" id="input-userid" placeholder="Masukkan ID Game Anda" class="w-full bg-slate-900/90 border border-slate-700 focus:border-brand-500 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition">
+                            </div>
+                            <div id="zone-id-container">
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Zone ID / Server</label>
+                                <input type="text" id="input-zoneid" placeholder="Contoh: 1234" class="w-full bg-slate-900/90 border border-slate-700 focus:border-brand-500 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition">
+                            </div>
+                        </div>
+                        <p id="help-text-content" class="text-[11px] text-slate-400 mt-2.5 flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info text-brand-400"></i> Pastikan ID yang dimasukkan sudah benar.
+                        </p>
+                    </div>
+
+                    <!-- STEP 2: SELECT NOMINAL -->
+                    <div class="glass-card rounded-2xl p-5 sm:p-6">
+                        <div class="flex items-center gap-3 mb-4 border-b border-slate-800 pb-3">
+                            <span class="w-7 h-7 rounded-full bg-brand-600 text-white flex items-center justify-center font-black text-xs">2</span>
+                            <h3 class="font-bold text-white text-base">Pilih Nominal Top Up</h3>
+                        </div>
+                        <div id="items-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <!-- Rendered Dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: PROMO CODE & PAYMENT METHOD -->
+                    <div class="glass-card rounded-2xl p-5 sm:p-6">
+                        <div class="flex items-center gap-3 mb-4 border-b border-slate-800 pb-3">
+                            <span class="w-7 h-7 rounded-full bg-brand-600 text-white flex items-center justify-center font-black text-xs">3</span>
+                            <h3 class="font-bold text-white text-base">Metode Pembayaran</h3>
+                        </div>
+
+                        <!-- PROMO CODE INPUT -->
+                        <div class="mb-5 bg-slate-900/60 p-3.5 rounded-xl border border-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-ticket text-brand-400"></i>
+                            <input type="text" id="input-promo" placeholder="Kode Promo (misal: JECICENTIL)" class="bg-transparent border-none text-xs text-white uppercase font-mono tracking-wider focus:outline-none flex-grow placeholder-slate-500">
+                            <button onclick="applyPromoCode()" class="bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition">
+                                Pakai
+                            </button>
+                        </div>
+
+                        <!-- PAYMENT OPTIONS GRID -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <div onclick="selectPayment('qris')" id="pay-qris" class="pay-option border border-slate-700 bg-slate-900/80 rounded-xl p-3 cursor-pointer hover:border-brand-500 transition text-center flex flex-col items-center justify-center">
+                                <span class="font-black text-sm text-white tracking-wider">QRIS</span>
+                                <span class="text-[10px] text-slate-400 mt-0.5">DANA, GoPay, Shopee, OVO</span>
+                            </div>
+                            <div onclick="selectPayment('bca')" id="pay-bca" class="pay-option border border-slate-700 bg-slate-900/80 rounded-xl p-3 cursor-pointer hover:border-brand-500 transition text-center flex flex-col items-center justify-center">
+                                <span class="font-black text-sm text-blue-400">BCA VA</span>
+                                <span class="text-[10px] text-slate-400 mt-0.5">Virtual Account 24 Jam</span>
+                            </div>
+                            <div onclick="selectPayment('dana')" id="pay-dana" class="pay-option border border-slate-700 bg-slate-900/80 rounded-xl p-3 cursor-pointer hover:border-brand-500 transition text-center flex flex-col items-center justify-center">
+                                <span class="font-black text-sm text-sky-400">DANA</span>
+                                <span class="text-[10px] text-slate-400 mt-0.5">Transfer Direct</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: WHATSAPP CONTACT -->
+                    <div class="glass-card rounded-2xl p-5 sm:p-6">
+                        <div class="flex items-center gap-3 mb-4 border-b border-slate-800 pb-3">
+                            <span class="w-7 h-7 rounded-full bg-brand-600 text-white flex items-center justify-center font-black text-xs">4</span>
+                            <h3 class="font-bold text-white text-base">Nomor WhatsApp</h3>
+                        </div>
+                        <div>
+                            <input type="tel" id="input-phone" placeholder="Contoh: 081234567890" class="w-full bg-slate-900/90 border border-slate-700 focus:border-brand-500 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition">
+                            <p class="text-[11px] text-slate-400 mt-2">Nomor ini digunakan untuk kirim bukti transaksi & konfirmasi pesanan.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT SUMMARY COLUMN (1 Col) -->
+                <div class="space-y-6">
+                    <div class="glass-card rounded-2xl p-5 sm:p-6 sticky top-20 border-brand-500/20">
+                        <h3 class="font-extrabold text-base text-white border-b border-slate-800 pb-3 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-receipt text-brand-400"></i> Ringkasan Pesanan
+                        </h3>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="flex justify-between text-slate-400">
+                                <span>Game Selected</span>
+                                <span id="summary-game" class="font-bold text-white">-</span>
+                            </div>
+                            <div class="flex justify-between text-slate-400">
+                                <span>Nominal Item</span>
+                                <span id="summary-item" class="font-bold text-white">Belum Dipilih</span>
+                            </div>
+                            <div class="flex justify-between text-slate-400">
+                                <span>Metode Pembayaran</span>
+                                <span id="summary-payment" class="font-bold text-white">Belum Dipilih</span>
+                            </div>
+                            <div id="summary-discount-row" class="hidden flex justify-between text-emerald-400 font-semibold">
+                                <span>Diskon Promo</span>
+                                <span id="summary-discount">-Rp 0</span>
+                            </div>
+                            <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
+                                <span class="font-extrabold text-sm text-white">Total Bayar</span>
+                                <span id="summary-total" class="font-black text-lg text-emerald-400">Rp 0</span>
+                            </div>
+                        </div>
+
+                        <button onclick="handleCheckout()" class="mt-6 w-full bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 hover:from-brand-500 hover:to-purple-500 text-white font-extrabold py-3.5 px-4 rounded-xl shadow-lg shadow-brand-500/30 text-sm transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-shield-halved"></i> Bayar Sekarang
+                        </button>
+                        <p class="text-[10px] text-slate-500 text-center mt-3">Sistem transaksi terenkripsi aman & bergaransi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL 1: PAYMENT MODAL & UPLOAD BUKTI (QRIS / VA) -->
+    <div id="modal-payment" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-card rounded-3xl max-w-md w-full p-6 relative border-slate-700 shadow-2xl animate-fade-in my-auto">
+            <button onclick="closeModal('modal-payment')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-4">
+                <span class="inline-block bg-brand-500/20 text-brand-400 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+                    Instruksi Pembayaran
+                </span>
+                <h3 id="modal-payment-title" class="text-lg font-black text-white">Pembayaran QRIS</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Selesaikan pembayaran sebelum batas waktu berakhir</p>
+            </div>
+
+            <!-- COUNTDOWN TIMER -->
+            <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-2.5 text-center mb-4">
+                <p class="text-[11px] text-amber-400 font-medium">Batas Waktu Pembayaran</p>
+                <p id="payment-timer" class="font-mono font-black text-amber-300 text-base">15:00</p>
+            </div>
+
+            <!-- AMOUNT TO PAY DISPLAY -->
+            <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-800 text-center mb-4">
+                <p class="text-[11px] text-slate-400">Total Yang Harus Dibayar</p>
+                <p id="modal-amount-display" class="text-2xl font-black text-emerald-400 mt-0.5">Rp 0</p>
+            </div>
+
+            <!-- DYNAMIC INSTRUCTION BOX (QRIS CODE / VA NUMBER) -->
+            <div id="payment-instruction-box" class="mb-5">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <!-- PROOF OF PAYMENT UPLOAD SECTION (IMGBB API) -->
+            <div class="border-t border-slate-800 pt-4 mb-5">
+                <label class="block text-xs font-bold text-slate-200 mb-1.5">
+                    <i class="fa-solid fa-upload text-brand-400 mr-1"></i> Upload Bukti Transfer (Opsional / Dianjurkan)
+                </label>
+                <div class="relative bg-slate-900 border-2 border-dashed border-slate-700 hover:border-brand-500 rounded-2xl p-4 text-center cursor-pointer transition">
+                    <input type="file" id="dropzone-file" accept="image/*" onchange="handleImageUpload(event)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                    
+                    <div id="upload-placeholder" class="space-y-1">
+                        <i class="fa-solid fa-cloud-arrow-up text-2xl text-slate-500"></i>
+                        <p class="text-xs text-slate-300 font-semibold">Klik untuk pilih screenshot bukti</p>
+                        <p class="text-[10px] text-slate-500">PNG, JPG, JPEG (Maks 5MB)</p>
+                    </div>
+
+                    <div id="upload-loading" class="hidden py-2">
+                        <i class="fa-solid fa-circle-notch fa-spin text-brand-500 text-xl"></i>
+                        <p class="text-xs text-slate-400 mt-1">Mengunggah ke server...</p>
+                    </div>
+
+                    <div id="upload-preview-container" class="hidden relative">
+                        <img id="upload-preview" src="" alt="Bukti Transfer" class="max-h-36 rounded-lg mx-auto border border-slate-700 object-contain">
+                        <button onclick="removeUploadedImage(event)" id="remove-image-btn" class="absolute -top-2 -right-2 bg-rose-600 text-white w-6 h-6 rounded-full text-xs font-bold shadow z-20">
+                            ✕
+                        </button>
+                    </div>
+                </div>
+                <input type="hidden" id="uploaded-image-url" value="">
+                <p id="upload-status" class="text-[10px] text-emerald-400 font-semibold mt-1 hidden text-center">
+                    ✓ Gambar berhasil diunggah!
+                </p>
+            </div>
+
+            <!-- SUBMIT VIA WHATSAPP ACTION BUTTON -->
+            <button onclick="confirmAndSendWA()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Konfirmasi & Kirim Bukti via WA
+            </button>
         </div>
-      </div>
-
-      <!-- Ringkasan & Checkout Top Up -->
-      <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-xl space-y-4 relative overflow-hidden">
-        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-pink-500/10 rounded-full blur-xl pointer-events-none"></div>
-        
-        <div class="space-y-2 text-xs text-slate-300 border-b border-slate-800 pb-4">
-          <div class="flex justify-between"><span>Game:</span><span id="summary-game" class="font-extrabold text-white">Mobile Legends</span></div>
-          <div class="flex justify-between"><span>Item Nominal:</span><span id="summary-item" class="font-extrabold text-white">WDP</span></div>
-          <div class="flex justify-between"><span>Metode Pembayaran:</span><span id="summary-payment" class="font-extrabold text-pink-400">QRIS All Payment</span></div>
-        </div>
-
-        <div class="flex items-center justify-between pt-1">
-          <div>
-            <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Total Tagihan</p>
-            <p id="summary-price" class="text-2xl font-black text-pink-400">Rp 29.000</p>
-          </div>
-          <button type="button" onclick="processPayment()" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-7 py-3.5 rounded-2xl font-black text-sm shadow-lg shadow-pink-500/25 active:scale-95 transition-all">
-            Bayar Sekarang
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: FORM RENTAL AKUN FF -->
-    <section id="section-form-rental" class="hidden space-y-6">
-      <button onclick="resetToSelection()" class="inline-flex items-center space-x-2 text-xs font-bold text-pink-600 hover:text-pink-700 bg-pink-50 hover:bg-pink-100/80 px-4 py-2 rounded-xl border border-pink-100 transition-all">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span>Kembali Pilih Layanan</span>
-      </button>
-
-      <div class="bg-white p-5 rounded-3xl border border-slate-100 shadow-sm flex items-center space-x-4">
-        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-600 text-white font-black text-xl flex items-center justify-center shadow-md">
-          RENT
-        </div>
-        <div>
-          <h3 class="text-lg font-black text-slate-800">Sewa / Rental Akun Free Fire</h3>
-          <p class="text-xs text-slate-400 font-medium">Pilih tipe akun Sultan & durasi bermain kamu</p>
-        </div>
-      </div>
-
-      <!-- Pilih Akun -->
-      <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
-        <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
-          <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">1</span>
-          <span>Pilih Akun Free Fire</span>
-        </h4>
-        <div class="grid grid-cols-2 gap-3">
-          <button id="btn-akun-1" onclick="switchRentalAccount('Akun 1')" class="p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-center font-bold text-slate-900 transition-all duration-200 shadow-sm hover:scale-[1.02]">
-            Akun 1 (Sultan Max)
-          </button>
-          <button id="btn-akun-2" onclick="switchRentalAccount('Akun 2')" class="p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-center font-bold text-slate-900 transition-all duration-200 hover:scale-[1.02]">
-            Akun 2 (Old Spec)
-          </button>
-        </div>
-      </div>
-
-      <!-- Pilih Durasi -->
-      <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
-        <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
-          <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">2</span>
-          <span>Pilih Durasi Sewa</span>
-        </h4>
-        <div id="rental-packages-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <!-- Dynamic packages -->
-        </div>
-      </div>
-
-      <!-- Input Kontak -->
-      <div class="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-sm space-y-3">
-        <h4 class="font-bold text-sm text-slate-800 flex items-center space-x-2.5">
-          <span class="w-7 h-7 rounded-xl bg-pink-500 text-white text-xs flex items-center justify-center font-extrabold shadow-md shadow-pink-500/20">3</span>
-          <span>Nomor WhatsApp Aktif</span>
-        </h4>
-        <input type="text" id="rental-phone" placeholder="Contoh: 081234567890" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium transition-all bg-slate-50/50 focus:bg-white">
-      </div>
-
-      <!-- Ringkasan & Checkout Rental -->
-      <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-xl space-y-4">
-        <div class="space-y-2 text-xs text-slate-300 border-b border-slate-800 pb-3">
-          <div class="flex justify-between"><span>Pilihan Akun:</span><span id="rental-summary-account" class="font-extrabold text-white">Akun 1</span></div>
-          <div class="flex justify-between"><span>Durasi Sewa:</span><span id="rental-summary-package" class="font-extrabold text-white">1 JAM</span></div>
-        </div>
-        <div class="flex items-center justify-between">
-          <div>
-            <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Total Biaya Rental</p>
-            <p id="rental-summary-price" class="text-2xl font-black text-pink-400">Rp 15.000</p>
-          </div>
-          <button type="button" onclick="processRentalSubmit()" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-7 py-3.5 rounded-2xl font-black text-sm shadow-lg shadow-pink-500/25 active:scale-95 transition-all">
-            Sewa Sekarang
-          </button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- MODAL CUSTOMER SERVICE -->
-  <div id="modal-cs" class="modal-overlay fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4" onclick="handleBackdropClick(event, 'modal-cs')">
-    <div class="modal-card bg-white w-full max-w-sm rounded-3xl p-6 space-y-5 shadow-2xl border border-slate-100">
-      <div class="flex items-center justify-between">
-        <h3 class="font-extrabold text-slate-800 text-base">Customer Service</h3>
-        <button type="button" onclick="closeModal('modal-cs')" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg hover:bg-slate-100 transition">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
-      </div>
-      <p class="text-xs text-slate-500 font-medium leading-relaxed">Ada kendala transaksi atau rental akun? CS kami siap membantu 24/7 melalui WhatsApp.</p>
-      <a href="https://wa.me/6281234567890" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center space-x-2 text-sm">
-        <i class="fa-brands fa-whatsapp text-lg"></i>
-        <span>Hubungi CS via WhatsApp</span>
-      </a>
     </div>
-  </div>
 
-  <!-- MODAL CEK STATUS PESANAN -->
-  <div id="modal-cek" class="modal-overlay fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4" onclick="handleBackdropClick(event, 'modal-cek')">
-    <div class="modal-card bg-white w-full max-w-sm rounded-3xl p-6 space-y-5 shadow-2xl border border-slate-100">
-      <div class="flex items-center justify-between">
-        <h3 class="font-extrabold text-slate-800 text-base">Cek Status Pesanan</h3>
-        <button type="button" onclick="closeModal('modal-cek')" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg hover:bg-slate-100 transition">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
-      </div>
-      
-      <div class="space-y-4">
-        <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1.5">Nomor Invoice / WhatsApp</label>
-          <input type="text" id="input-trx-id" placeholder="Contoh: INV12345 atau 08123456789" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500/40 text-sm font-medium">
-          <button type="button" onclick="checkInvoiceStatus()" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 rounded-2xl shadow-lg shadow-pink-500/20 transition-all flex items-center justify-center space-x-2 text-sm mt-3">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <span>Cek Status</span>
-          </button>
-        </div>
+    <!-- MODAL 2: SEWA AKUN FF SELECTION MODAL -->
+    <div id="modal-rental" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-card rounded-3xl max-w-lg w-full p-6 relative border-slate-700 shadow-2xl animate-fade-in my-auto">
+            <button onclick="closeModal('modal-rental')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-        <div id="trx-result" class="hidden p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
-          <p class="font-bold text-slate-800" id="trx-result-title">Invoice: INV-892347</p>
-          <p class="text-emerald-600 font-extrabold flex items-center space-x-1">
-            <i class="fa-solid fa-circle-check"></i>
-            <span>Status: BERHASIL</span>
-          </p>
-          <p class="text-slate-500">Item: <span id="trx-result-item" class="font-semibold text-slate-700">Top Up Game</span></p>
+            <div class="mb-4">
+                <span class="inline-block bg-amber-500/20 text-amber-400 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+                    Free Fire Rental
+                </span>
+                <h3 id="rental-modal-title" class="text-xl font-black text-white">Sewa Account 1</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Pilih durasi sewa & metode pembayaran untuk memproses QRIS</p>
+            </div>
+
+            <!-- SELECT ACCOUNT SWITCH TABS -->
+            <div class="flex bg-slate-900 p-1 rounded-xl mb-4 border border-slate-800 text-xs font-bold">
+                <button onclick="switchRentalAccount('acc1')" id="tab-acc1" class="flex-1 py-2 rounded-lg text-center transition">Account 1</button>
+                <button onclick="switchRentalAccount('acc2')" id="tab-acc2" class="flex-1 py-2 rounded-lg text-center transition text-slate-400">Account 2</button>
+            </div>
+
+            <!-- DURATION OPTIONS GRID -->
+            <div class="mb-5">
+                <label class="block text-xs font-bold text-slate-300 mb-2">Pilih Paket Durasi Sewa:</label>
+                <div id="rental-durations-grid" class="grid grid-cols-2 gap-2 max-h-56 overflow-y-auto pr-1">
+                    <!-- Rendered dynamically -->
+                </div>
+            </div>
+
+            <!-- PAYMENT METHOD SELECTION FOR RENTAL -->
+            <div class="mb-5">
+                <label class="block text-xs font-bold text-slate-300 mb-2">Metode Pembayaran:</label>
+                <div class="grid grid-cols-3 gap-2">
+                    <div onclick="selectRentalPayment('qris')" id="rental-pay-qris" class="rental-pay-opt border border-brand-500 bg-brand-500/10 rounded-xl p-2.5 cursor-pointer text-center">
+                        <span class="font-black text-xs text-white">QRIS</span>
+                    </div>
+                    <div onclick="selectRentalPayment('bca')" id="rental-pay-bca" class="rental-pay-opt border border-slate-700 bg-slate-900 rounded-xl p-2.5 cursor-pointer text-center">
+                        <span class="font-black text-xs text-blue-400">BCA VA</span>
+                    </div>
+                    <div onclick="selectRentalPayment('dana')" id="rental-pay-dana" class="rental-pay-opt border border-slate-700 bg-slate-900 rounded-xl p-2.5 cursor-pointer text-center">
+                        <span class="font-black text-xs text-sky-400">DANA</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- USER WHATSAPP FOR RENTAL -->
+            <div class="mb-5">
+                <label class="block text-xs font-bold text-slate-300 mb-1">Nomor WhatsApp Anda:</label>
+                <input type="tel" id="rental-phone" placeholder="Contoh: 081234567890" class="w-full bg-slate-900 border border-slate-700 focus:border-brand-500 rounded-xl px-3.5 py-2 text-xs text-white outline-none">
+            </div>
+
+            <!-- SUMMARY BAR -->
+            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex items-center justify-between mb-5">
+                <span class="text-xs text-slate-400">Total Harga Sewa</span>
+                <span id="rental-total-price" class="font-black text-emerald-400 text-lg">Rp 15.000</span>
+            </div>
+
+            <button onclick="processRentalCheckout()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition">
+                <i class="fa-solid fa-qrcode"></i> Lanjut Ke Pembayaran QRIS
+            </button>
         </div>
-      </div>
     </div>
-  </div>
-
-  <!-- MODAL QRIS OTOMATIS & UPLOAD BUKTI -->
-  <div id="modal-qris" class="modal-overlay fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="modal-card bg-white w-full max-w-md rounded-3xl p-6 space-y-4 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <div>
-          <h3 class="font-extrabold text-slate-800 text-base">Pembayaran QRIS Otomatis</h3>
-          <p class="text-[11px] text-slate-400">Scan QR Code dan upload bukti transfer</p>
-        </div>
-        <button type="button" onclick="closeModal('modal-qris')" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg hover:bg-slate-100 transition">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
-      </div>
-
-      <!-- Timer CountDown -->
-      <div class="bg-pink-50 border border-pink-100 rounded-2xl p-3 flex items-center justify-between">
-        <span class="text-xs font-bold text-pink-700">Sisa Waktu Pembayaran:</span>
-        <span id="qris-timer" class="text-xs font-black text-pink-600 bg-white px-2.5 py-1 rounded-xl shadow-xs">15:00</span>
-      </div>
-
-      <!-- QRIS Code Container -->
-      <div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-4 flex flex-col items-center justify-center text-center space-y-2">
-        <div class="w-48 h-48 bg-white p-2 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center">
-          <!-- QRIS Asli Anda diganti di sini -->
-          <img src="https://i.gyazo.com/0b361da5d6edece207fcd6c48adf4527.jpg" alt="QRIS Asli" class="w-full h-full object-contain rounded-lg">
-        </div>
-        <p class="text-xs font-bold text-slate-700" id="qris-nominal-display">Rp 29.000</p>
-        <p class="text-[10px] text-slate-400">Scan dengan BCA, DANA, OVO, GoPay, ShopeePay, dll.</p>
-      </div>
-
-      <!-- Upload Bukti Transfer -->
-      <div class="space-y-1.5">
-        <label class="block text-xs font-bold text-slate-700">Upload Bukti Transfer / Screenshot</label>
-        <div class="relative border-2 border-slate-200 border-dashed rounded-2xl p-3.5 text-center hover:border-pink-500 transition bg-slate-50/50 cursor-pointer">
-          <input type="file" id="qris-proof-file" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer" onchange="handleFileSelect(this)">
-          <div id="upload-instruction" class="space-y-1">
-            <i class="fa-solid fa-cloud-arrow-up text-pink-500 text-lg"></i>
-            <p class="text-xs font-semibold text-slate-600" id="file-name-display">Klik untuk pilih gambar bukti pembayaran</p>
-            <p class="text-[10px] text-slate-400">Format: JPG, PNG</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tombol Konfirmasi -->
-      <button type="button" onclick="confirmQrisPayment()" class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-black py-3.5 rounded-2xl shadow-lg shadow-pink-500/25 active:scale-95 transition-all text-sm flex items-center justify-center space-x-2">
-        <i class="fa-solid fa-paper-plane"></i>
-        <span>Kirim Bukti & Proses Pesanan</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-white border-t border-slate-100 mt-12 py-6 text-center text-slate-400 text-xs font-medium">
-    <div class="max-w-4xl mx-auto px-4 space-y-2">
-      <p class="font-bold text-slate-600">JECIMARKET &copy; 2026. All rights reserved.</p>
-      <p class="text-[11px] text-slate-400">Layanan Top Up Game Instant & Sewa Akun Sultan Terpercaya.</p>
-    </div>
-  </footer>
-
-  <!-- SCRIPT LOGIC -->
-  <script>
-    const state = {
-      currentGame: 'ml',
-      selectedItem: 'WDP',
-      selectedPrice: 29000,
-      selectedPayment: 'QRIS All Payment',
-      rentalAccount: 'Akun 1',
-      rentalPackage: '1 JAM',
-      rentalPrice: 15000
-    };
-
-    const rentalPackages = {
-      'Akun 1': [
-        { label: '1 JAM', price: 15000 },
-        { label: '3 JAM', price: 35000 },
-        { label: '12 JAM', price: 80000 },
-        { label: '1 HARI', price: 130000 }
-      ],
-      'Akun 2': [
-        { label: '1 JAM', price: 10000 },
-        { label: '3 JAM', price: 25000 },
-        { label: '12 JAM', price: 60000 },
-        { label: '1 HARI', price: 100000 }
-      ]
-    };
-
-    function formatRupiah(number) {
-      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
-    }
-
-    function openModal(id) {
-      const modal = document.getElementById(id);
-      if (modal) modal.classList.add('active');
-    }
-
-    function closeModal(id) {
-      const modal = document.getElementById(id);
-      if (modal) modal.classList.remove('active');
-    }
-
-    function handleBackdropClick(e, id) {
-      if (e.target.id === id) closeModal(id);
-    }
-
-    function resetToSelection() {
-      document.getElementById('section-pilih-game').classList.remove('hidden');
-      document.getElementById('section-form-topup').classList.add('hidden');
-      document.getElementById('section-form-rental').classList.add('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function openGameForm(game) {
-      state.currentGame = game;
-      document.getElementById('section-pilih-game').classList.add('hidden');
-      document.getElementById('section-form-topup').classList.remove('hidden');
-      document.getElementById('section-form-rental').classList.add('hidden');
-
-      const icon = document.getElementById('active-game-icon');
-      const title = document.getElementById('active-game-title');
-      const mlForm = document.getElementById('form-input-ml');
-      const ffForm = document.getElementById('form-input-ff');
-      const mlItems = document.getElementById('items-ml');
-      const ffItems = document.getElementById('items-ff');
-
-      if (game === 'ml') {
-        icon.innerText = 'ML';
-        icon.className = 'w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white font-black text-xl flex items-center justify-center shadow-md';
-        title.innerText = 'Mobile Legends';
-        mlForm.classList.remove('hidden');
-        ffForm.classList.add('hidden');
-        mlItems.classList.remove('hidden');
-        ffItems.classList.add('hidden');
-        
-        state.selectedItem = 'WDP';
-        state.selectedPrice = 29000;
-      } else {
-        icon.innerText = 'FF';
-        icon.className = 'w-14 h-14 rounded-2xl bg-gradient-to-tr from-orange-500 to-amber-500 text-white font-black text-xl flex items-center justify-center shadow-md';
-        title.innerText = 'Free Fire';
-        mlForm.classList.add('hidden');
-        ffForm.classList.remove('hidden');
-        mlItems.classList.add('hidden');
-        ffItems.classList.remove('hidden');
-
-        state.selectedItem = 'Member Mingguan';
-        state.selectedPrice = 27500;
-      }
-
-      updateTopupSummary();
-    }
-
-    function openRentalForm() {
-      document.getElementById('section-pilih-game').classList.add('hidden');
-      document.getElementById('section-form-topup').classList.add('hidden');
-      document.getElementById('section-form-rental').classList.remove('hidden');
-      
-      switchRentalAccount('Akun 1');
-    }
-
-    function setItem(item, price, element) {
-      state.selectedItem = item;
-      state.selectedPrice = price;
-
-      const parent = element.parentElement;
-      const buttons = parent.querySelectorAll('.item-btn');
-      buttons.forEach(btn => {
-        btn.className = 'item-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm';
-        btn.querySelector('p:last-child').className = 'text-xs text-slate-500 font-semibold mt-1';
-      });
-
-      element.className = 'item-btn p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left transition-all duration-200 shadow-sm';
-      element.querySelector('p:last-child').className = 'text-xs text-pink-600 font-extrabold mt-1';
-
-      updateTopupSummary();
-    }
-
-    function setPayment(paymentName, element) {
-      state.selectedPayment = paymentName;
-
-      const buttons = document.querySelectorAll('.pay-btn');
-      buttons.forEach(btn => {
-        btn.className = 'pay-btn p-3.5 rounded-2xl border border-slate-200 hover:border-pink-300 text-left flex items-center justify-between transition-all duration-200 hover:scale-[1.01]';
-      });
-
-      element.className = 'pay-btn p-3.5 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left flex items-center justify-between transition-all duration-200 shadow-sm hover:scale-[1.01]';
-
-      updateTopupSummary();
-    }
-
-    function updateTopupSummary() {
-      document.getElementById('summary-game').innerText = state.currentGame === 'ml' ? 'Mobile Legends' : 'Free Fire';
-      document.getElementById('summary-item').innerText = state.selectedItem;
-      document.getElementById('summary-payment').innerText = state.selectedPayment;
-      document.getElementById('summary-price').innerText = formatRupiah(state.selectedPrice);
-    }
-
-    function switchRentalAccount(accName) {
-      state.rentalAccount = accName;
-
-      const btn1 = document.getElementById('btn-akun-1');
-      const btn2 = document.getElementById('btn-akun-2');
-
-      if (accName === 'Akun 1') {
-        btn1.className = 'p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-center font-bold text-slate-900 transition-all duration-200 shadow-sm hover:scale-[1.02]';
-        btn2.className = 'p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-center font-bold text-slate-900 transition-all duration-200 hover:scale-[1.02]';
-      } else {
-        btn2.className = 'p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-center font-bold text-slate-900 transition-all duration-200 shadow-sm hover:scale-[1.02]';
-        btn1.className = 'p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-center font-bold text-slate-900 transition-all duration-200 hover:scale-[1.02]';
-      }
-
-      renderRentalPackages(accName);
-    }
-
-    function renderRentalPackages(accName) {
-      const grid = document.getElementById('rental-packages-grid');
-      grid.innerHTML = '';
-
-      const packages = rentalPackages[accName];
-      state.rentalPackage = packages[0].label;
-      state.rentalPrice = packages[0].price;
-
-      packages.forEach((pkg, index) => {
-        const isSelected = index === 0;
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.onclick = () => setRentalPackage(pkg.label, pkg.price, btn);
-        btn.className = `rental-pkg-btn p-4 rounded-2xl text-left transition-all duration-200 ${
-          isSelected 
-            ? 'border-2 border-pink-500 bg-pink-50/50 shadow-sm' 
-            : 'border border-slate-200 hover:border-pink-300 hover:shadow-sm'
-        }`;
-        
-        btn.innerHTML = `
-          <p class="font-bold text-slate-900 text-sm">${pkg.label}</p>
-          <p class="${isSelected ? 'text-pink-600 font-extrabold' : 'text-slate-500 font-semibold'} text-xs mt-1">${formatRupiah(pkg.price)}</p>
-        `;
-        grid.appendChild(btn);
-      });
-
-      updateRentalSummary();
-    }
-
-    function setRentalPackage(pkgLabel, price, element) {
-      state.rentalPackage = pkgLabel;
-      state.rentalPrice = price;
-
-      const buttons = document.querySelectorAll('.rental-pkg-btn');
-      buttons.forEach(btn => {
-        btn.className = 'rental-pkg-btn p-4 rounded-2xl border border-slate-200 hover:border-pink-300 text-left transition-all duration-200 hover:shadow-sm';
-        btn.querySelector('p:last-child').className = 'text-xs text-slate-500 font-semibold mt-1';
-      });
-
-      element.className = 'rental-pkg-btn p-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 text-left transition-all duration-200 shadow-sm';
-      element.querySelector('p:last-child').className = 'text-xs text-pink-600 font-extrabold mt-1';
-
-      updateRentalSummary();
-    }
-
-    function updateRentalSummary() {
-      document.getElementById('rental-summary-account').innerText = state.rentalAccount;
-      document.getElementById('rental-summary-package').innerText = state.rentalPackage;
-      document.getElementById('rental-summary-price').innerText = formatRupiah(state.rentalPrice);
-    }
-
-    let qrisTimerInterval;
-    function startQrisTimer(durationInSeconds) {
-      let timer = durationInSeconds;
-      const display = document.getElementById('qris-timer');
-      
-      clearInterval(qrisTimerInterval);
-      qrisTimerInterval = setInterval(() => {
-        let minutes = parseInt(timer / 60, 10);
-        let seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.innerText = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-          clearInterval(qrisTimerInterval);
-          display.innerText = "Waktu Habis";
-        }
-      }, 1000);
-    }
-
-    function handleFileSelect(input) {
-      if (input.files && input.files[0]) {
-        const fileName = input.files[0].name;
-        document.getElementById('file-name-display').innerText = `File terpilih: ${fileName}`;
-      }
-    }
-
-    function processPayment() {
-      const phone = document.getElementById('topup-phone').value.trim();
-      let userId = '';
-
-      if (state.currentGame === 'ml') {
-        const uid = document.getElementById('ml-user-id').value.trim();
-        const zid = document.getElementById('ml-zone-id').value.trim();
-        if (!uid || !zid) {
-          alert('Harap isi User ID dan Zone ID Mobile Legends Anda!');
-          return;
-        }
-        userId = `${uid} (${zid})`;
-      } else {
-        const fid = document.getElementById('ff-player-id').value.trim();
-        if (!fid) {
-          alert('Harap isi Player ID Free Fire Anda!');
-          return;
-        }
-        userId = fid;
-      }
-
-      if (!phone) {
-        alert('Harap isi nomor WhatsApp Anda untuk konfirmasi!');
-        return;
-      }
-
-      if (state.selectedPayment === 'QRIS All Payment') {
-        document.getElementById('qris-nominal-display').innerText = formatRupiah(state.selectedPrice);
-        openModal('modal-qris');
-        startQrisTimer(900);
-        return;
-      }
-
-      executeWhatsAppCheckout(userId, phone, 'Belum Upload (Metode Non-QRIS)');
-    }
-
-    function confirmQrisPayment() {
-      const fileInput = document.getElementById('qris-proof-file');
-      if (!fileInput.files || fileInput.files.length === 0) {
-        alert('Harap upload bukti pembayaran / screenshot terlebih dahulu!');
-        return;
-      }
-
-      const phone = document.getElementById('topup-phone').value.trim();
-      let userId = '';
-      if (state.currentGame === 'ml') {
-        userId = `${document.getElementById('ml-user-id').value.trim()} (${document.getElementById('ml-zone-id').value.trim()})`;
-      } else {
-        userId = document.getElementById('ff-player-id').value.trim();
-      }
-
-      const fileName = fileInput.files[0].name;
-      closeModal('modal-qris');
-      executeWhatsAppCheckout(userId, phone, `Sudah Upload (${fileName})`);
-    }
-
-    function executeWhatsAppCheckout(userId, phone, proofStatus) {
-      const gameName = state.currentGame === 'ml' ? 'Mobile Legends' : 'Free Fire';
-      const text = `Halo Admin JECIMARKET, saya ingin melakukan Top Up:
-----------------------------------
-*Game:* ${gameName}
-*ID Akun:* ${userId}
-*Nominal:* ${state.selectedItem}
-*Pembayaran:* ${state.selectedPayment}
-*Total Tagihan:* ${formatRupiah(state.selectedPrice)}
-*Bukti Bayar:* ${proofStatus}
-*WhatsApp:* ${phone}
-----------------------------------
-Mohon diproses segera. Terima kasih!`;
-
-      window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(text)}`, '_blank');
-    }
-
-    function processRentalSubmit() {
-      const phone = document.getElementById('rental-phone').value.trim();
-      if (!phone) {
-        alert('Harap masukkan nomor WhatsApp aktif Anda!');
-        return;
-      }
-
-      const text = `Halo Admin JECIMARKET, saya ingin Sewa Akun FF:
-----------------------------------
-*Pilihan Akun:* ${state.rentalAccount}
-*Durasi Sewa:* ${state.rentalPackage}
-*Total Biaya:* ${formatRupiah(state.rentalPrice)}
-*Nomor WhatsApp:* ${phone}
-----------------------------------
-Mohon instruksi pembayaran dan data login akunnya. Terima kasih!`;
-
-      window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(text)}`, '_blank');
-    }
-
-    function checkInvoiceStatus() {
-      const input = document.getElementById('input-trx-id').value.trim();
-      const res = document.getElementById('trx-result');
-      
-      if (!input) {
-        alert('Masukkan Nomor Invoice atau Nomor WhatsApp Anda!');
-        return;
-      }
-
-      document.getElementById('trx-result-title').innerText = `Invoice / Nomor: ${input}`;
-      res.classList.remove('hidden');
-    }
-
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-
-    function goToSlide(index) {
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].className = 'dot w-2.5 h-2 rounded-full bg-white transition-all opacity-40 hover:opacity-75';
-
-      currentSlide = index;
-
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].className = 'dot w-7 h-2 rounded-full bg-white transition-all opacity-100 shadow-sm';
-    }
-
-    setInterval(() => {
-      let nextSlide = (currentSlide + 1) % slides.length;
-      goToSlide(nextSlide);
-    }, 5000);
-  </script>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <script>
+        // APP STATE & DATABASE
+        const state = {
+            game: null,
+            item: null,
+            price: 0,
+            payment: null,
+            paymentName: '',
+            discount: 0,
+            isRentalMode: false,
+            rentalAccount: 'acc1',
+            rentalPackage: null
+        };
+
+        const IMGBB_API_KEY = '6d70266f5113d0948f92b3ed88e399f9'; // Client ImgBB key
+
+        const gamesData = {
+            ml: {
+                id: 'ml',
+                name: 'Mobile Legends',
+                logo: 'https://i.gyazo.com/a4897b96f0204ace2ee28c3dced5dff0.jpg',
+                badge: 'Fast Process',
+                idLabel: 'User ID & Zone ID',
+                needsZoneId: true,
+                helpText: 'Contoh: User ID 12345678, Zone ID (1234)',
+                items: [
+                    { id: 'ml-1', name: 'Weekly Diamond Pass (WDP)', price: 29000, icon: '🎫' },
+                    { id: 'ml-2', name: '50 💎 Diamond', price: 13000, icon: '💎' },
+                    { id: 'ml-3', name: '100 💎 Diamond', price: 26500, icon: '💎' },
+                    { id: 'ml-4', name: '150 💎 Diamond', price: 40500, icon: '💎' },
+                    { id: 'ml-5', name: '250 💎 Diamond', price: 66000, icon: '💎' },
+                    { id: 'ml-6', name: '300 💎 Diamond', price: 79500, icon: '💎' },
+                    { id: 'ml-7', name: '355 💎 Diamond', price: 92000, icon: '💎' },
+                    { id: 'ml-8', name: '406 💎 Diamond', price: 106500, icon: '💎' },
+                    { id: 'ml-9', name: '500 💎 Diamond', price: 131000, icon: '💎' },
+                    { id: 'ml-10', name: '600 💎 Diamond', price: 154500, icon: '💎' },
+                    { id: 'ml-11', name: '702 💎 Diamond', price: 181000, icon: '💎' },
+                    { id: 'ml-12', name: '841 💎 Diamond', price: 219500, icon: '💎' },
+                    { id: 'ml-13', name: '963 💎 Diamond', price: 243000, icon: '💎' },
+                    { id: 'ml-14', name: '1050 💎 Diamond', price: 267500, icon: '💎' },
+                    { id: 'ml-15', name: '1412 💎 Diamond', price: 367500, icon: '💎' },
+                    { id: 'ml-16', name: '2010 💎 Diamond', price: 495500, icon: '💎' },
+                    { id: 'ml-17', name: '4020 💎 Diamond', price: 1010000, icon: '💎' }
+                ]
+            },
+            ff: {
+                id: 'ff',
+                name: 'Free Fire',
+                logo: 'https://i.gyazo.com/f74fecf79e4720746b73cc5c858cfc7a.png',
+                badge: 'Instant 24 Jam',
+                idLabel: 'User ID (FF)',
+                needsZoneId: false,
+                helpText: 'Contoh: 12345678 (8-10 digit angka ID Free Fire)',
+                items: [
+                    { id: 'ff-1', name: 'Membership Mingguan', price: 27000, icon: '👑' },
+                    { id: 'ff-2', name: 'Membership Bulanan', price: 80000, icon: '🌟' },
+                    { id: 'ff-3', name: '355 💎 Diamond', price: 43500, icon: '💎' },
+                    { id: 'ff-4', name: '425 💎 Diamond', price: 53000, icon: '💎' },
+                    { id: 'ff-5', name: '500 💎 Diamond', price: 62500, icon: '💎' },
+                    { id: 'ff-6', name: '600 💎 Diamond', price: 75000, icon: '💎' },
+                    { id: 'ff-7', name: '720 💎 Diamond', price: 88000, icon: '💎' },
+                    { id: 'ff-8', name: '860 💎 Diamond', price: 104000, icon: '💎' },
+                    { id: 'ff-9', name: '930 💎 Diamond', price: 113500, icon: '💎' },
+                    { id: 'ff-10', name: '1000 💎 Diamond', price: 121500, icon: '💎' },
+                    { id: 'ff-11', name: '1450 💎 Diamond', price: 175000, icon: '💎' },
+                    { id: 'ff-12', name: '2000 💎 Diamond', price: 244000, icon: '💎' },
+                    { id: 'ff-13', name: '3000 💎 Diamond', price: 360500, icon: '💎' },
+                    { id: 'ff-14', name: '4000 💎 Diamond', price: 486000, icon: '💎' }
+                ]
+            },
+            roblox: {
+                id: 'roblox',
+                name: 'Roblox',
+                logo: 'https://i.gyazo.com/33773a7287a35a30259685512c0b490e.png',
+                badge: 'Stok Habis',
+                isOutOfStock: true,
+                idLabel: 'Username Roblox',
+                needsZoneId: false,
+                helpText: 'Roblox Robux saat ini stok sedang habis',
+                items: []
+            }
+        };
+
+        const rentalRates = {
+            acc1: {
+                name: 'Account 1 (Sultan Vault)',
+                packages: [
+                    { label: '1 Jam', price: 15000 },
+                    { label: '2 Jam', price: 25000 },
+                    { label: '3 Jam', price: 35000 },
+                    { label: '4 Jam', price: 45000 },
+                    { label: '5 Jam', price: 60000 },
+                    { label: 'Paket Pagi (06.00 - 12.00)', price: 75000 },
+                    { label: 'Paket Siang (12.00 - 18.00)', price: 75000 },
+                    { label: 'Paket Sekolah (00.00 - 18.00)', price: 75000 },
+                    { label: 'Full Day (24 Jam)', price: 150000 }
+                ]
+            },
+            acc2: {
+                name: 'Account 2 (Pro Old Season)',
+                packages: [
+                    { label: '1 Jam', price: 15000 },
+                    { label: '2 Jam', price: 25000 },
+                    { label: '3 Jam', price: 35000 },
+                    { label: '4 Jam', price: 45000 },
+                    { label: '5 Jam', price: 55000 },
+                    { label: 'Paket Pagi (06.00 - 12.00)', price: 70000 },
+                    { label: 'Paket Siang (12.00 - 18.00)', price: 70000 },
+                    { label: 'Paket Sekolah (00.00 - 18.00)', price: 70000 },
+                    { label: 'Full Day (24 Jam)', price: 150000 }
+                ]
+            }
+        };
+
+        const formatRp = (num) => 'Rp ' + num.toLocaleString('id-ID');
+
+        const showToast = (message, type = 'info') => {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `px-4 py-3 rounded-xl text-xs font-bold text-white shadow-xl flex items-center gap-2 pointer-events-auto transition transform translate-y-2 opacity-0 ${
+                type === 'error' ? 'bg-rose-600' : type === 'success' ? 'bg-emerald-600' : 'bg-brand-600'
+            }`;
+            toast.innerHTML = `<i class="fa-solid ${type === 'error' ? 'fa-circle-exclamation' : 'fa-circle-check'}"></i> ${message}`;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        };
+
+        const showCatalogSection = () => {
+            document.getElementById('game-catalog-section').classList.remove('hidden');
+            document.getElementById('form-section').classList.add('hidden');
+            document.getElementById('rental-section').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        const scrollToRental = () => {
+            showCatalogSection();
+            document.getElementById('rental-section').scrollIntoView({ behavior: 'smooth' });
+        };
+
+        const selectGameCatalog = (gameId) => {
+            const gameData = gamesData[gameId];
+            if (gameData.isOutOfStock) {
+                showToast("Maaf, stok item untuk " + gameData.name + " saat ini sedang habis.", "error");
+                return;
+            }
+
+            state.game = gameId;
+            state.item = null;
+            state.price = 0;
+            state.discount = 0;
+            state.isRentalMode = false;
+
+            // Display active game view
+            document.getElementById('active-game-logo').src = gameData.logo;
+            document.getElementById('active-game-title').innerText = gameData.name;
+            document.getElementById('active-game-tag').innerText = gameData.badge;
+
+            // Setup fields
+            const zoneContainer = document.getElementById('zone-id-container');
+            document.getElementById('label-userid').innerText = gameData.idLabel;
+            document.getElementById('input-userid').placeholder = `Masukkan ${gameData.idLabel}`;
+            document.getElementById('help-text-content').innerHTML = `<i class="fa-solid fa-circle-info text-brand-400"></i> ${gameData.helpText}`;
+
+            if (gameData.needsZoneId) {
+                zoneContainer.classList.remove('hidden');
+            } else {
+                zoneContainer.classList.add('hidden');
+                document.getElementById('input-zoneid').value = '';
+            }
+
+            document.getElementById('summary-game').innerText = gameData.name;
+
+            renderItems();
+            updateSummary();
+
+            // Switch views
+            document.getElementById('game-catalog-section').classList.add('hidden');
+            document.getElementById('rental-section').classList.add('hidden');
+            document.getElementById('form-section').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        const renderItems = () => {
+            const container = document.getElementById('items-grid');
+            container.innerHTML = '';
+            const gameData = gamesData[state.game];
+
+            gameData.items.forEach(item => {
+                const isSelected = state.item && state.item.id === item.id;
+                const card = document.createElement('div');
+                card.className = `border rounded-xl p-3 cursor-pointer transition flex flex-col justify-between ${
+                    isSelected ? 'border-brand-500 bg-brand-500/10 active-ring' : 'border-slate-800 bg-slate-900/80 hover:border-slate-700'
+                }`;
+                card.onclick = () => {
+                    state.item = item;
+                    renderItems();
+                    updateSummary();
+                };
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xl">${item.icon}</span>
+                        ${isSelected ? '<i class="fa-solid fa-circle-check text-brand-400 text-xs"></i>' : ''}
+                    </div>
+                    <p class="font-bold text-xs text-white">${item.name}</p>
+                    <p class="font-extrabold text-xs text-emerald-400 mt-1">${formatRp(item.price)}</p>
+                `;
+                container.appendChild(card);
+            });
+        };
+
+        const applyPromoCode = () => {
+            const promoInput = document.getElementById('input-promo').value.trim().toUpperCase();
+            if (!promoInput) {
+                showToast("Masukkan kode promo terlebih dahulu.", "error");
+                return;
+            }
+
+            if (promoInput === 'JECICENTIL') {
+                state.discount = 2000;
+                showToast("Kode promo JECICENTIL berhasil dipasang! (Potongan Rp 2.000)", "success");
+            } else {
+                state.discount = 0;
+                showToast("Kode promo tidak valid.", "error");
+            }
+            updateSummary();
+        };
+
+        const selectPayment = (type) => {
+            state.payment = type;
+            document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('border-brand-500', 'bg-brand-500/10'));
+            
+            const selectedEl = document.getElementById(`pay-${type}`);
+            if (selectedEl) {
+                selectedEl.classList.add('border-brand-500', 'bg-brand-500/10');
+            }
+
+            const names = { qris: 'QRIS All Payment', bca: 'BCA Virtual Account', dana: 'DANA Transfer' };
+            state.paymentName = names[type] || type;
+
+            updateSummary();
+        };
+
+        const updateSummary = () => {
+            const summaryItem = document.getElementById('summary-item');
+            const summaryPayment = document.getElementById('summary-payment');
+            const summaryTotal = document.getElementById('summary-total');
+            const discountRow = document.getElementById('summary-discount-row');
+            const summaryDiscount = document.getElementById('summary-discount');
+
+            if (state.item) {
+                summaryItem.innerText = state.item.name;
+                let rawPrice = state.item.price;
+                let finalPrice = Math.max(0, rawPrice - state.discount);
+                state.price = finalPrice;
+
+                if (state.discount > 0) {
+                    discountRow.classList.remove('hidden');
+                    summaryDiscount.innerText = `-${formatRp(state.discount)}`;
+                } else {
+                    discountRow.classList.add('hidden');
+                }
+
+                summaryTotal.innerText = formatRp(finalPrice);
+            } else {
+                summaryItem.innerText = 'Belum Dipilih';
+                summaryTotal.innerText = 'Rp 0';
+                discountRow.classList.add('hidden');
+            }
+
+            summaryPayment.innerText = state.paymentName || 'Belum Dipilih';
+        };
+
+        let selectedRentalAcc = 'acc1';
+        let selectedRentalPkgIdx = 0;
+        let selectedRentalPay = 'qris';
+
+        const openRentalModal = (accType) => {
+            selectedRentalAcc = accType;
+            switchRentalAccount(accType);
+            showModal('modal-rental');
+        };
+
+        const switchRentalAccount = (accType) => {
+            selectedRentalAcc = accType;
+            selectedRentalPkgIdx = 0;
+
+            const tab1 = document.getElementById('tab-acc1');
+            const tab2 = document.getElementById('tab-acc2');
+
+            if (accType === 'acc1') {
+                tab1.className = "flex-1 py-2 rounded-lg text-center transition bg-brand-600 text-white shadow";
+                tab2.className = "flex-1 py-2 rounded-lg text-center transition text-slate-400 hover:text-white";
+                document.getElementById('rental-modal-title').innerText = "Sewa Account 1 (Sultan Vault)";
+            } else {
+                tab2.className = "flex-1 py-2 rounded-lg text-center transition bg-purple-600 text-white shadow";
+                tab1.className = "flex-1 py-2 rounded-lg text-center transition text-slate-400 hover:text-white";
+                document.getElementById('rental-modal-title').innerText = "Sewa Account 2 (Pro Old)";
+            }
+
+            renderRentalDurations();
+        };
+
+        const renderRentalDurations = () => {
+            const container = document.getElementById('rental-durations-grid');
+            container.innerHTML = '';
+            const pkgs = rentalRates[selectedRentalAcc].packages;
+
+            pkgs.forEach((pkg, idx) => {
+                const isSelected = selectedRentalPkgIdx === idx;
+                const btn = document.createElement('div');
+                btn.id = `rental-dur-${idx}`;
+                btn.className = `p-2.5 rounded-xl border cursor-pointer text-xs font-bold transition flex justify-between items-center ${
+                    isSelected ? 'border-amber-500 bg-amber-500/10 text-white' : 'border-slate-800 bg-slate-900 text-slate-300 hover:border-slate-700'
+                }`;
+                btn.onclick = () => {
+                    selectedRentalPkgIdx = idx;
+                    renderRentalDurations();
+                };
+
+                btn.innerHTML = `
+                    <span>${pkg.label}</span>
+                    <span class="text-emerald-400">${formatRp(pkg.price)}</span>
+                `;
+                container.appendChild(btn);
+            });
+
+            const currentPkg = pkgs[selectedRentalPkgIdx];
+            document.getElementById('rental-total-price').innerText = formatRp(currentPkg.price);
+        };
+
+        const selectRentalPayment = (payType) => {
+            selectedRentalPay = payType;
+            document.querySelectorAll('.rental-pay-opt').forEach(el => el.classList.remove('border-brand-500', 'bg-brand-500/10'));
+            
+            const sel = document.getElementById(`rental-pay-${payType}`);
+            if (sel) sel.classList.add('border-brand-500', 'bg-brand-500/10');
+        };
+
+        const processRentalCheckout = () => {
+            const phone = document.getElementById('rental-phone').value.trim();
+            if (!phone || phone.length < 9) {
+                showToast("Harap masukkan nomor WhatsApp yang valid.", "error");
+                return;
+            }
+
+            const pkg = rentalRates[selectedRentalAcc].packages[selectedRentalPkgIdx];
+
+            state.isRentalMode = true;
+            state.rentalAccount = selectedRentalAcc === 'acc1' ? 'Account 1 (Sultan Vault)' : 'Account 2 (Pro Old)';
+            state.rentalPackage = pkg.label;
+            state.price = pkg.price;
+            state.payment = selectedRentalPay;
+            state.paymentName = selectedRentalPay === 'qris' ? 'QRIS All Payment' : selectedRentalPay === 'bca' ? 'BCA Virtual Account' : 'DANA Direct';
+
+            closeModal('modal-rental');
+            openPaymentModal();
+        };
+
+        const handleCheckout = () => {
+            const uid = document.getElementById('input-userid').value.trim();
+            const zid = document.getElementById('input-zoneid').value.trim();
+            const phone = document.getElementById('input-phone').value.trim();
+            const gameData = gamesData[state.game];
+
+            if (!uid) {
+                showToast(`Harap isi ${gameData.idLabel} game Anda terlebih dahulu.`, "error");
+                return;
+            }
+            if (gameData.needsZoneId && !zid) {
+                showToast("Harap isi Zone ID / Server game Anda.", "error");
+                return;
+            }
+            if (!state.item) {
+                showToast("Harap pilih nominal top up.", "error");
+                return;
+            }
+            if (!state.payment) {
+                showToast("Harap pilih metode pembayaran.", "error");
+                return;
+            }
+            if (!phone || phone.length < 9) {
+                showToast("Harap masukkan nomor WhatsApp yang valid.", "error");
+                return;
+            }
+
+            state.isRentalMode = false;
+            openPaymentModal();
+        };
+
+        let timerInterval = null;
+
+        const openPaymentModal = () => {
+            const box = document.getElementById('payment-instruction-box');
+            document.getElementById('modal-amount-display').innerText = formatRp(state.price);
+            document.getElementById('modal-payment-title').innerText = `Pembayaran ${state.paymentName}`;
+
+            if (state.payment === 'bca') {
+                box.innerHTML = `
+                    <div class="bg-slate-900 border border-slate-700 rounded-2xl p-4 text-center">
+                        <p class="text-xs text-slate-400 mb-1">Nomor BCA Virtual Account</p>
+                        <div class="flex items-center justify-center gap-2 bg-slate-800 py-2.5 px-4 rounded-xl border border-slate-700 my-2">
+                            <span class="font-mono font-black text-lg text-blue-400 tracking-wider">880123891029384</span>
+                            <button onclick="navigator.clipboard.writeText('880123891029384'); showToast('Nomor VA disalin!', 'success');" class="text-xs text-slate-400 hover:text-white p-1" title="Salin">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                        <p class="text-[11px] text-slate-400">Atas Nama: <strong class="text-white">JECIMARKET TOPUP</strong></p>
+                    </div>
+                `;
+            } else {
+                box.innerHTML = `
+                    <div class="bg-white p-4 rounded-2xl flex flex-col items-center justify-center max-w-[220px] mx-auto shadow-inner">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=JECIMARKET_QRIS_${Date.now()}" alt="QRIS Code" class="w-40 h-40 object-contain">
+                        <p class="text-[10px] font-bold text-slate-800 mt-2 uppercase tracking-wider">Scan QRIS Untuk Bayar</p>
+                    </div>
+                `;
+            }
+
+            startPaymentTimer();
+            removeUploadedImage();
+            showModal('modal-payment');
+        };
+
+        const startPaymentTimer = () => {
+            clearInterval(timerInterval);
+            let timeLeft = 15 * 60; // 15 Minutes
+            const timerDisplay = document.getElementById('payment-timer');
+
+            timerInterval = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerDisplay.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.innerText = "EXPIRED";
+                }
+                timeLeft--;
+            }, 1000);
+        };
+
+        const handleImageUpload = (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const loading = document.getElementById('upload-loading');
+            const placeholder = document.getElementById('upload-placeholder');
+            const previewContainer = document.getElementById('upload-preview-container');
+            const preview = document.getElementById('upload-preview');
+            const status = document.getElementById('upload-status');
+            const hiddenUrl = document.getElementById('uploaded-image-url');
+
+            placeholder.classList.add('hidden');
+            loading.classList.remove('hidden');
+            previewContainer.classList.add('hidden');
+
+            const formData = new FormData();
+            formData.append('image', file);
+
+            fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                loading.classList.add('hidden');
+                if (data && data.data && data.data.url) {
+                    preview.src = data.data.url;
+                    hiddenUrl.value = data.data.url;
+                    previewContainer.classList.remove('hidden');
+                    status.classList.remove('hidden');
+                    showToast("Bukti gambar berhasil diunggah!", "success");
+                } else {
+                    // Fallback to Data URL if key API reaches limit
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        preview.src = e.target.result;
+                        hiddenUrl.value = e.target.result;
+                        previewContainer.classList.remove('hidden');
+                        status.classList.remove('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            })
+            .catch(() => {
+                // Fallback to DataURL local preview
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    loading.classList.add('hidden');
+                    preview.src = e.target.result;
+                    hiddenUrl.value = e.target.result;
+                    previewContainer.classList.remove('hidden');
+                    status.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            });
+        };
+
+        const removeUploadedImage = (event) => {
+            if (event) event.stopPropagation();
+            document.getElementById('dropzone-file').value = '';
+            document.getElementById('upload-placeholder').classList.remove('hidden');
+            document.getElementById('upload-preview-container').classList.add('hidden');
+            document.getElementById('upload-status').classList.add('hidden');
+            document.getElementById('uploaded-image-url').value = '';
+        };
+
+        const confirmAndSendWA = () => {
+            const adminPhone = "6282260397943"; // WhatsApp Admin Number
+            const imageUrl = document.getElementById('uploaded-image-url').value;
+
+            let message = "";
+
+            if (state.isRentalMode) {
+                const userPhone = document.getElementById('rental-phone').value.trim();
+                message = `*HALO ADMIN JECIMARKET (SEWA AKUN FF)*\n\n` +
+                          `Saya telah melakukan pembayaran untuk rental akun:\n` +
+                          `• *Akun*: ${state.rentalAccount}\n` +
+                          `• *Paket*: ${state.rentalPackage}\n` +
+                          `• *Total Bayar*: ${formatRp(state.price)}\n` +
+                          `• *Metode*: ${state.paymentName}\n` +
+                          `• *WhatsApp*: ${userPhone}\n` +
+                          (imageUrl ? `• *Bukti Transfer*: ${imageUrl}\n\n` : `\n`) +
+                          `Mohon kirimkan data login akun FF. Terima kasih!`;
+            } else {
+                const uid = document.getElementById('input-userid').value.trim();
+                const zid = document.getElementById('input-zoneid').value.trim();
+                const userPhone = document.getElementById('input-phone').value.trim();
+                const gameData = gamesData[state.game];
+
+                message = `*HALO ADMIN JECIMARKET (TOP UP GAME)*\n\n` +
+                          `Saya telah melakukan pembayaran:\n` +
+                          `• *Game*: ${gameData.name}\n` +
+                          `• *ID Game*: ${uid} ${zid ? '(' + zid + ')' : ''}\n` +
+                          `• *Item*: ${state.item.name}\n` +
+                          `• *Total Bayar*: ${formatRp(state.price)}\n` +
+                          `• *Metode*: ${state.paymentName}\n` +
+                          `• *WhatsApp*: ${userPhone}\n` +
+                          (imageUrl ? `• *Bukti Transfer*: ${imageUrl}\n\n` : `\n`) +
+                          `Mohon proses pesanan saya. Terima kasih!`;
+            }
+
+            const waUrl = `https://wa.me/${adminPhone}?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+        };
+
+        const showModal = (id) => {
+            document.getElementById(id).classList.remove('hidden');
+        };
+
+        const closeModal = (id) => {
+            document.getElementById(id).classList.add('hidden');
+        };
+    </script>
 </body>
 </html>
